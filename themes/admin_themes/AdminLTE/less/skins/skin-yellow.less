@@ -1,0 +1,55 @@
+/*
+ * Skin: Yellow
+ * ------------
+ */
+@import "../bootstrap/mixins.less";
+@import "../bootstrap/variables.less";
+@import "../variables.less";
+@import "../mixins.less";
+
+.skin-yellow {
+    .main-header {
+        .navbar {
+            .navbar-variant(@yellow; #fff);
+
+            .sidebar-toggle {
+                color: #fff;
+
+                &:hover {
+                    background-color: darken(@yellow, 5%);
+                }
+            }
+
+            @media (max-width: @screen-header-collapse) {
+                .dropdown-menu {
+                    li {
+                        &.divider {
+                            background-color: rgba(255, 255, 255, 0.1);
+                        }
+
+                        a {
+                            color: #fff;
+                            &:hover {
+                                background: darken(@yellow, 5%);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .logo {
+            .logo-variant(darken(@yellow, 5%));
+        }
+
+        li.user-header {
+            background-color: darken(@yellow, 10%);
+        }
+    }
+
+    .content-header {
+        background: transparent;
+    }
+
+    .skin-dark-sidebar(@yellow);
+}
