@@ -1,0 +1,311 @@
+* {
+   outline: none !important;
+ }
+
+body {
+  font-family: @font-family-base;
+  font-size: @font-size-base;
+  line-height: @line-height-base;
+  color: @text-color;
+  background-color: @body-bg;
+}
+
+// Links
+
+a {
+  color: @link-color;
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    color: @link-hover-color;
+    text-decoration: @link-hover-decoration;
+  }
+
+  &:focus {
+    .tab-focus();
+  }
+}
+
+
+// Figures
+//
+// We reset this here because previously Normalize had no `figure` margins. This
+// ensures we don't break anyone's use of the element.
+
+figure {
+  margin: 0;
+}
+
+
+// Images
+
+img {
+  vertical-align: middle;
+}
+
+// Responsive images (ensure images don't scale beyond their parents)
+.img-responsive {
+  .img-responsive();
+}
+
+// Rounded corners
+.img-rounded {
+  border-radius: @border-radius-large;
+}
+
+// Image thumbnails
+//
+// Heads up! This is mixin-ed into thumbnails.less for `.thumbnail`.
+.img-thumbnail {
+  padding: @thumbnail-padding;
+  line-height: @line-height-base;
+  background-color: @thumbnail-bg;
+  border: 1px solid @thumbnail-border;
+  border-radius: @thumbnail-border-radius;
+  .transition(all .2s ease-in-out);
+
+  // Keep them at most 100% wide
+  .img-responsive(inline-block);
+}
+
+// Perfect circle
+.img-circle {
+  border-radius: 50%; // set radius in percents
+}
+
+
+// Horizontal rules
+
+hr {
+  margin-top:    @line-height-computed;
+  margin-bottom: @line-height-computed;
+  border: 0;
+  border-top: 1px solid @hr-border;
+}
+
+
+// Only display content to screen readers
+//
+// See: http://a11yproject.com/posts/how-to-hide-content
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+
+// Use in conjunction with .sr-only to only display content when it's focused.
+// Useful for "Skip to main content" links; see http://www.w3.org/TR/2013/NOTE-WCAG20-TECHS-20130905/G1
+// Credit: HTML5 Boilerplate
+
+.sr-only-focusable {
+  &:active,
+  &:focus {
+    position: static;
+    width: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+  }
+}
+
+[role="button"] {
+  cursor: pointer;
+}
+
+.card {
+  background: #fff;
+  .border-radius(2px);
+  padding: 10px;
+  border: 1px solid #e4e2e2;
+  margin-bottom: 15px;
+}
+
+.opentable,
+.openside {
+  background: #fff;
+  .border-radius(3px);
+  padding: 10px;
+  border: 1px solid #e4e2e2;
+  margin-bottom: 15px;
+
+  .title {
+    color: #282d31;
+    margin-bottom: 15px;
+    font-weight: 600;
+  }
+}
+
+.opentable {
+  padding: 20px;
+
+  .title {
+    font-size: 25px;
+  }
+}
+
+.openside .title {
+  font-size: 17px;
+}
+
+#error_logform {
+  margin-bottom: 20px !important;
+  padding-bottom: 10px;
+
+  #delete_entries {
+    .btn-sm();
+    padding: 3px 10px;
+  }
+
+  #delete_status-field {
+    margin-top: 1.5px;
+  }
+}
+
+.file-input {
+  .form-control {
+    border: 1px solid #ccc;
+    .transition(.5s);
+    .box-shadow(none) !important;
+  }
+}
+
+.fileinput-remove-button,
+.btn-file {
+  .box-shadow(none) !important;
+  border: 1px solid #949494 !important;
+}
+
+.fileinput-remove-button:hover,
+.fileinput-remove-button:focus,
+.btn-file:hover,
+.btn-file:focus {
+  border: 1px solid #949494 !important;
+}
+
+.btn-modal.btn-file {
+  background: #fff;
+  border: 2px dashed #ccc !important;
+
+  &:hover,
+  &:focus {
+    background: #ececec;
+  }
+}
+
+.panel .file-preview {
+  margin-top: 0;
+}
+
+.file-preview {
+  margin-top: 10px;
+  background: #f9f7f7;
+  .border-radius(2px) !important;
+
+  &-frame {
+    .box-shadow(none) !important;
+    background: #fff;
+    padding: 0 !important
+  }
+}
+
+.select2 {
+  &-container-multi .select2-choices {
+    .border-radius(3px);
+    .box-shadow(none);
+    background-image: none !important;
+
+    .select2-search {
+      &-field input {
+        padding: 1px !important;
+        padding-left: 5px !important;
+      }
+
+      &-choice {
+        margin: 3px 0 3px 3px !important;
+
+        table {
+          border: none;
+        }
+      }
+    }
+  }
+
+  &-search-choice-close {
+    .transition(inherit);
+  }
+
+  &-search .select2-input.select2-active {
+    background: #FFF url("@{images}loader.svg") no-repeat 100% !important;
+    background: url("@{images}loader.svg") no-repeat 100%, -webkit-gradient(linear, left top, left bottom, color-stop(85%, #FFF), color-stop(99%, #EEE)) !important;
+    background: url("@{images}loader.svg") no-repeat 100%, -webkit-linear-gradient(top, #FFF 85%, #EEE 99%) !important;
+    background: url("@{images}loader.svg") no-repeat 100%, -o-linear-gradient(top, #FFF 85%, #EEE 99%) !important;
+    background: url("@{images}loader.svg") no-repeat 100%, linear-gradient(top, #FFF 85%, #EEE 99%) !important;
+  }
+
+  &-more-results.select2-active {
+    background: #F4F4F4 url("@{images}loader.svg") no-repeat 100% !important;
+  }
+
+  &-container-multi .select2-choices .select2-search-field .select2-input.select2-active {
+    background: #FFF url("@{images}loader.svg") no-repeat 100% !important;
+  }
+
+  &-results {
+    margin: 0 !important;
+    padding: 0 !important;
+
+    .select2-highlighted table {
+      border: none;
+    }
+
+    .select2-no-results {
+      padding: 5px 10px;
+      .border-bottom-radius(3px);
+    }
+  }
+
+  &-offscreen {
+    display: none;
+  }
+}
+
+.panel-txtarea > .panel-heading {
+  background-color: #e1e4e4 !important;
+}
+
+.editor-wrapper {
+  > .nav {
+    > li {
+      a:active,
+      &.active > a {
+        background-color: darken(@btn-default-bg, 10%);
+        border-color: darken(@btn-default-border, 12%);
+      }
+
+      > a {
+        padding: @padding-xs-vertical @padding-xs-horizontal;
+      }
+    }
+  }
+}
+
+.filter,
+.post_items {
+  .card
+}
+
+.forum.label > .detail {
+  margin: 0px -10px;
+}
+
+.contentLower {
+  margin-top: 10px;
+}
