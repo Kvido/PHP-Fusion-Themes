@@ -143,6 +143,21 @@ a:focus {
   text-decoration: none;
   color: #72afd2;
 }
+.text-primary {
+  color: #3c8dbc;
+}
+.text-success {
+  color: #00a65a;
+}
+.text-info {
+  color: #00c0ef;
+}
+.text-warning {
+  color: #f39c12;
+}
+.text-danger {
+  color: #dd4b39;
+}
 .page-header {
   margin: 10px 0 20px 0;
   font-size: 22px;
@@ -1058,7 +1073,6 @@ a:focus {
 .dropdown-menu {
   -webkit-box-shadow: none;
   box-shadow: none;
-  border-color: #eee;
 }
 .dropdown-menu > li > a {
   color: #777;
@@ -1212,7 +1226,7 @@ a:focus {
   border-top-left-radius: 0;
   padding: 0;
   border-top-width: 0;
-  width: 280px;
+  width: 300px;
 }
 .navbar-nav > .user-menu > .dropdown-menu,
 .navbar-nav > .user-menu > .dropdown-menu > .user-body {
@@ -1447,13 +1461,14 @@ a:focus {
   border-color: #d2d6de;
   background-color: #fff;
 }
+.input-group .input-group-btn .btn {
+  -webkit-border-radius: 0;
+  border-radius: 0;
+}
 .btn-group-vertical .btn.btn-flat:first-of-type,
 .btn-group-vertical .btn.btn-flat:last-of-type {
   -webkit-border-radius: 0;
   border-radius: 0;
-}
-.icheck > label {
-  padding-left: 0;
 }
 .form-control-feedback.fa {
   line-height: 34px;
@@ -2177,7 +2192,7 @@ a:focus {
   text-align: center;
   font-size: 45px;
   line-height: 90px;
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.15);
 }
 .info-box-icon > img {
   max-width: 100%;
@@ -2612,6 +2627,18 @@ table.text-center th {
 }
 .table.align td {
   text-align: right;
+}
+.tbl1 {
+  word-break: break-all;
+}
+.tbl1 > div > a {
+  display: block;
+  padding: 7.76px 0;
+  margin: -8px;
+  border-left: 1px solid #ddd;
+}
+.tbl2 {
+  background-color: #f8f8f8;
 }
 .label-default {
   background-color: #d2d6de;

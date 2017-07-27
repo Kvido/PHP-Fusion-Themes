@@ -2,7 +2,7 @@
 PHP Fusion 9 Themes
 
 Themes:
- - Czechia
+ - [Czechia](https://github.com/RobiNN1/PHP-Fusion-Themes/tree/master/themes/Czechia)
 
 Admin Themes:
- - AdminLTE
+ - [AdminLTE](https://github.com/RobiNN1/PHP-Fusion-Themes/tree/master/themes/admin_themes/AdminLTE)
