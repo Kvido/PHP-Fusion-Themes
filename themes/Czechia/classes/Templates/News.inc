@@ -263,21 +263,6 @@ class News extends Core {
                 echo '<div><b>'.$data['news_news'].'</b></div>';
                 echo '<br/>';
                 echo $data['news_extended'];
-
-                echo '<div>';
-                    echo '<a class="display-block m-b-10" href="'.BASEDIR.fusion_get_settings('opening_page').'">';
-                        echo '<img src="'.IMAGES.'php-fusion-logo-cz.png" alt="Logo" style="width: 180px;"/>';
-                        echo '<img src="'.IMAGES.'sipka1.gif" width="17" height="15" border="0" title="Zpět na HomePage">';
-                    echo '</a>';
-
-                    $url = (isset($_SERVER['HTTPS']) ? 'https' : 'http').'://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
-                    echo '<div class="m-r-5 display-inline">';
-                    echo '<iframe src="https://www.facebook.com/plugins/share_button.php?href='.$url.'&layout=button&size=small&mobile_iframe=true&width=58&height=20" width="65" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>';
-                    echo '</div>';
-
-                    add_to_head('<script src="https://platform.twitter.com/widgets.js" async defer></script>');
-                    echo '<div class="m-r-5 display-inline"><a href="https://twitter.com/share" class="twitter-share-button" data-show-count="false">Tweet</a></div>';
-                echo '</div>';
             echo '</div>';
 
             if (!empty($data['news_gallery'])) {
