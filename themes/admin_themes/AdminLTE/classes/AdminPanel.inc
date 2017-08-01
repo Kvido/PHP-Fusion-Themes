@@ -39,7 +39,10 @@ class AdminPanel extends Components {
             echo '</div>';
 
             $this->MainFooter();
-            $this->ControlSidebar();
+
+            if (!self::IsMobile()) {
+                $this->ControlSidebar();
+            }
 
         echo '</div>';
     }
@@ -76,7 +79,7 @@ class AdminPanel extends Components {
                         if (count($languages) > 1) {
                             echo '<li class="dropdown languages-menu">';
                                 echo '<a href="#" class="dropdown-toggle" data-toggle="dropdown">';
-                                    echo '<i class="fa fa-globe"></i> <img src="'.BASEDIR.'locale/'.LANGUAGE.'/'.LANGUAGE.'-s.png" alt="'.translate_lang_names(LANGUAGE).'"/>';
+                                    echo '<i class="fa fa-globe"></i> <img style="margin-top: -3px;" src="'.BASEDIR.'locale/'.LANGUAGE.'/'.LANGUAGE.'-s.png" alt="'.translate_lang_names(LANGUAGE).'"/>';
                                     echo '<span class="caret"></span>';
                                 echo '</a>';
                                 echo '<ul class="dropdown-menu">';
@@ -91,7 +94,10 @@ class AdminPanel extends Components {
                         $this->UserMenu();
 
                         echo '<li><a href="'.BASEDIR.'index.php"><i class="fa fa-home"></i></a></li>';
-                        echo '<li><a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a></li>';
+
+                        if (!self::IsMobile()) {
+                            echo '<li><a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a></li>';
+                        }
                     echo '</ul>';
                 echo '</div>';
             echo '</nav>';
@@ -109,7 +115,7 @@ class AdminPanel extends Components {
                 echo '<span class="caret"></span>';
             echo '</a>';
             echo '<ul class="dropdown-menu">';
-                echo '<li class="header">'.$this->SetLocale('001').' '.format_word(count($messages), $locale['fmt_message']).'</li>';
+                echo '<li class="header text-center">'.$this->SetLocale('001').' '.format_word(count($messages), $locale['fmt_message']).'</li>';
                 echo '<li><ul class="menu">';
                     if (!empty($messages)) {
                         foreach ($messages as $message) {
@@ -131,7 +137,7 @@ class AdminPanel extends Components {
                     }
 
                 echo '</ul></li>';
-                echo '<li class="footer"><a href="'.BASEDIR.'messages.php?msg_send=new">'.$this->SetLocale('003').'</a></li>';
+                echo '<li class="footer"><a href="'.BASEDIR.'messages.php?msg_send=new" class="text-bold">'.$this->SetLocale('003').'</a></li>';
             echo '</ul>';
         echo '</li>';
     }
@@ -207,29 +213,29 @@ class AdminPanel extends Components {
     }
 
     private function SearchAjax() {
-        add_to_jquery("$('#search_pages').bind('keyup', function(e) {
+        OutputHandler::addToJQuery('$("#search_pages").bind("keyup", function(e) {
             var data = {
-                'pagestring': $(this).val(),
-                'url': '".$_SERVER['REQUEST_URI']."',
+                "pagestring": $(this).val(),
+                "url": "'.$_SERVER['REQUEST_URI'].'",
             };
 
             $.ajax({
-                url: '".ADMINLTE."acp_search.php".fusion_get_aidlink()."',
-                dataType: 'html',
-                method: 'get',
+                url: "'.ADMINLTE.'acp_search.php'.fusion_get_aidlink().'",
+                dataType: "html",
+                method: "get",
                 data: $.param(data),
                 success: function(e) {
-                    if ($('#search_pages').val() == '') {
-                        $('#adl').show();
-                        $('#search_result').html(e).hide();
-                        $('#search_result li').html(e).hide();
+                    if ($("#search_pages").val() == "") {
+                        $("#adl").show();
+                        $("#search_result").html(e).hide();
+                        $("#search_result li").html(e).hide();
                     } else {
-                        $('#search_result').html(e).show();
-                        $('#adl').hide();
+                        $("#search_result").html(e).show();
+                        $("#adl").hide();
                     }
                 }
             });
-        });");
+        });');
     }
 
     private function SidebarMenu() {

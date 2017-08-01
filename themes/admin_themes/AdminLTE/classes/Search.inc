@@ -37,7 +37,7 @@ class Search {
                 $message = !empty($this->result['status']) ? self::SetLocale($this->result['status']) : '';
 
                 if (!empty($message)) {
-                    echo '<li class="header">'.$message.'</li>';
+                    echo '<li class="header text-white">'.$message.'</li>';
                 }
 
                 if (!empty($this->result)) {
