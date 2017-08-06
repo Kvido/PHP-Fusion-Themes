@@ -23,7 +23,6 @@ use \PHPFusion\OutputHandler;
 class AdminPanel extends Components {
     public function __construct() {
         OutputHandler::addToHead('<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">');
-        OutputHandler::addToHead('<link rel="stylesheet" href="'.ADMINLTE.'skins/_all-skins.css">');
         OutputHandler::addToFooter('<script type="text/javascript" src="'.ADMINLTE.'js/adminlte.min.js"></script>');
 
         echo '<div class="wrapper">';
@@ -252,7 +251,10 @@ class AdminPanel extends Components {
                     echo '<li class="treeview'.($active ? ' active' : '').'">';
                         echo '<a href="#">';
                             echo Admins::getInstance()->get_admin_section_icons($i).' <span>'.$section_name.'</span>';
-                            echo '<span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>';
+                            echo '<span class="pull-right-container">';
+                                echo '<i class="fa fa-angle-left pull-right"></i>';
+                                echo ($i > 4 ? '<small class="label pull-right bg-blue">'.count($admin_pages[$i]).'</small>' : '');
+                            echo '</span>';
                         echo '</a>';
                         echo '<ul class="treeview-menu">';
                             foreach ($admin_pages[$i] as $key => $data) {
