@@ -2942,6 +2942,16 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     border-radius: 4px;
   }
 }
+@media (min-width: 992px) {
+  .navbar .navbar-nav {
+    display: inline-block;
+    float: none;
+    vertical-align: top;
+  }
+  .navbar .navbar-collapse {
+    text-align: center;
+  }
+}
 @media (min-width: 768px) {
   .navbar-header {
     float: left;

@@ -256,7 +256,9 @@ class News extends Core {
             echo '<div class="overflow-hide">';
                 if ($data['news_image_src']) {
                     echo '<a href="'.$data['news_image_src'].'" class="news-image-overlay">';
-                        echo '<img class="img-responsive pull-left m-r-10" style="width: 200px;" src="'.$data['news_image_src'].'" alt="'.$data['news_subject'].'"/>';
+                        $position = $data['news_image_align'] == 'news-img-center' ? 'center-x m-b-10' : $data['news_image_align'];
+                        $width = $data['news_image_align'] == 'news-img-center' ? '100%' : '200px';
+                        echo '<img class="img-responsive '.$position.' m-r-10" style="width: '.$width.';" src="'.$data['news_image_src'].'" alt="'.$data['news_subject'].'"/>';
                     echo '</a>';
                 }
 
