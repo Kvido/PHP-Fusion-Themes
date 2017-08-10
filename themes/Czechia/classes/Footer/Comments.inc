@@ -184,8 +184,8 @@ class Comments extends Core {
                 foreach ($info as $id => $data) {
                     echo '<li id="comment-'.$id.'" class="m-t-5">';
                         echo '<div class="pull-left">'.$data['avatar'].'</div>';
-                        echo '<strong>'.$data['title'].'</strong>';
-                        echo '<div class="clearfix"><a href="'.$data['c_url'].'">'.trim_text($data['c_title'], 40).'</a></div>';
+                        echo '<strong>'.trim_text($data['title'], 40).'</strong>';
+                        echo '<div class="clearfix"><a href="'.$data['c_url'].'">'.trim_text($data['c_title'], 35).'</a></div>';
                     echo '</li>';
                 }
             echo '</ul>';

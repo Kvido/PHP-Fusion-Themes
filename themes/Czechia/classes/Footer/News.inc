@@ -39,7 +39,7 @@ class News extends Core {
                 echo '<ul class="list-style-none">';
                     foreach ($data['news_items'] as $news_id => $news_data) {
                         echo '<li>';
-                            echo '<a href="'.$news_data['news_url'].'">'.$news_data['news_subject'].'</a>';
+                            echo '<a href="'.$news_data['news_url'].'">'.trim_text($news_data['news_subject'], 40).'</a>';
                             echo '<br/>';
                             echo '<small>';
                                 echo '<i class="fa fa-calendar"></i> '.showdate('shortdate', $news_data['news_datestamp']);
