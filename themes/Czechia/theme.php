@@ -106,7 +106,6 @@ function display_profile_form($info) {
     CzechiaTheme\Templates\Profile::EditProfile($info);
 }
 
-
 set_image('imagenotfound', fusion_get_settings('siteurl').'themes/Czechia/images/noimage.svg');
 
 /**
