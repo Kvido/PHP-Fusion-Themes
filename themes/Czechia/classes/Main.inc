@@ -262,7 +262,7 @@ class Main extends Core {
         echo form_text('user_pass', '', '', ['placeholder' => $locale['global_102'], 'type' => 'password', 'required' => TRUE]);
         echo '<label><input type="checkbox" name="remember_me" value="y"/> '.$locale['global_103'].'</label>';
         echo form_button('login', $locale['global_104'], '', [
-            'class' => 'm-t-20 m-b-20 btn-block btn-primary',
+            'class' => 'm-t-10 m-b-10 btn-block btn-primary',
             'icon' => 'fa fa-sign-in'
         ]);
         echo closeform();

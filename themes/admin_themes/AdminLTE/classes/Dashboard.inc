@@ -25,6 +25,7 @@ class Dashboard {
     private static function RenderDashboard() {
         global $members, $forum, $download, $news, $articles, $weblinks, $photos, $global_comments,
                $global_ratings, $global_submissions, $link_type, $submit_data,
+               $submit_type, $submit_link, // for 9.0
                $comments_type, $infusions_count, $global_infusions;
 
         $locale = fusion_get_locale();
@@ -69,7 +70,8 @@ class Dashboard {
             $desktop = 4;
 
             echo '<div class="row">';
-                if (infusion_exists('forum')) {
+                $forum = function_exists('infusion_exists') ? infusion_exists('forum') : db_exists(DB_PREFIX.'forums');
+                if ($forum) {
                     echo '<div class="col-xs-'.$mobile.' col-sm-'.$tablet.' col-md-'.$laptop.' col-lg-'.$desktop.' block">';
                         echo '<div class="info-box">';
                             echo '<span class="info-box-icon"><i class="fa fa-comments"></i></span>';
@@ -97,7 +99,8 @@ class Dashboard {
                     echo '</div>';
                 }
 
-                if (infusion_exists('downloads')) {
+                $downloads = function_exists('infusion_exists') ? infusion_exists('downloads') : db_exists(DB_PREFIX.'downloads');
+                if ($downloads) {
                     echo '<div class="col-xs-'.$mobile.' col-sm-'.$tablet.' col-md-'.$laptop.' col-lg-'.$desktop.' block">';
                         echo '<div class="info-box">';
                             echo '<span class="info-box-icon"><i class="fa fa-cloud-download"></i></span>';
@@ -120,7 +123,8 @@ class Dashboard {
                     echo '</div>';
                 }
 
-                if (infusion_exists('news')) {
+                $news = function_exists('infusion_exists') ? infusion_exists('news') : db_exists(DB_PREFIX.'news');
+                if ($news) {
                     echo '<div class="col-xs-'.$mobile.' col-sm-'.$tablet.' col-md-'.$laptop.' col-lg-'.$desktop.' block">';
                         echo '<div class="info-box">';
                             echo '<span class="info-box-icon"><i class="fa fa-newspaper-o"></i></span>';
@@ -143,7 +147,8 @@ class Dashboard {
                     echo '</div>';
                 }
 
-                if (infusion_exists('articles')) {
+                $articles = function_exists('infusion_exists') ? infusion_exists('articles') : db_exists(DB_PREFIX.'articles');
+                if ($articles) {
                     echo '<div class="col-xs-'.$mobile.' col-sm-'.$tablet.' col-md-'.$laptop.' col-lg-'.$desktop.' block">';
                         echo '<div class="info-box">';
                             echo '<span class="info-box-icon"><i class="fa fa-book"></i></span>';
@@ -166,7 +171,8 @@ class Dashboard {
                     echo '</div>';
                 }
 
-                if (infusion_exists('weblinks')) {
+                $weblinks = function_exists('infusion_exists') ? infusion_exists('weblinks') : db_exists(DB_PREFIX.'weblinks');
+                if ($weblinks) {
                     echo '<div class="col-xs-'.$mobile.' col-sm-'.$tablet.' col-md-'.$laptop.' col-lg-'.$desktop.' block">';
                         echo '<div class="info-box">';
                             echo '<span class="info-box-icon"><i class="fa fa-link"></i></span>';
@@ -189,7 +195,8 @@ class Dashboard {
                     echo "</div>";
                 }
 
-                if (infusion_exists('gallery')) {
+                $gallery = function_exists('infusion_exists') ? infusion_exists('gallery') : db_exists(DB_PREFIX.'photos');
+                if ($gallery) {
                     echo '<div class="col-xs-'.$mobile.' col-sm-'.$tablet.' col-md-'.$laptop.' col-lg-'.$desktop.' block">';
                         echo '<div class="info-box">';
                             echo '<span class="info-box-icon"><i class="fa fa-camera-retro"></i></span>';
@@ -272,18 +279,33 @@ class Dashboard {
                     echo '<div id="submissions">';
                         openside('<strong class="text-uppercase">'.$locale['279'].'</strong><span class="pull-right badge">'.number_format($global_submissions['rows']).'</span>');
                             if (count($global_submissions['data']) > 0) {
-                                foreach ($global_submissions['data'] as $i => $submit_date) {
-                                    $review_link = sprintf($submit_data[$submit_date['submit_type']]['admin_link'], $submit_date['submit_id']);
+                                if (!empty($submit_data)) {
+                                    foreach ($global_submissions['data'] as $i => $submit_date) {
+                                        $review_link = sprintf($submit_data[$submit_date['submit_type']]['admin_link'], $submit_date['submit_id']);
 
-                                    echo '<div data-id="'.$i.'" class="clearfix p-b-10'.($i > 0 ? ' p-t-10' : '').'"'.($i > 0 ? ' style="border-top: 1px solid #ddd;"' : '').'>';
-                                        echo '<div class="pull-left display-inline-block m-t-0 m-b-0">'.display_avatar($submit_date, '25px', '', FALSE, 'img-rounded m-r-5').'</div>';
-                                        echo '<strong>'.profile_link($submit_date['user_id'], $submit_date['user_name'], $submit_date['user_status']).' </strong>';
-                                        echo $locale['273b'].' <strong>'.$submit_data[$submit_date['submit_type']]['submit_locale'].'</strong> ';
-                                        echo timer($submit_date['submit_datestamp']);
-                                        if (!empty($review_link)) {
-                                            echo '<a class="btn btn-sm btn-default m-l-10 pull-right" href="'.$review_link.'">'.$locale['286'].'</a>';
-                                        }
-                                    echo '</div>';
+                                        echo '<div data-id="'.$i.'" class="clearfix p-b-10'.($i > 0 ? ' p-t-10' : '').'"'.($i > 0 ? ' style="border-top: 1px solid #ddd;"' : '').'>';
+                                            echo '<div class="pull-left display-inline-block m-t-0 m-b-0">'.display_avatar($submit_date, '25px', '', FALSE, 'img-rounded m-r-5').'</div>';
+                                            echo '<strong>'.profile_link($submit_date['user_id'], $submit_date['user_name'], $submit_date['user_status']).' </strong>';
+                                            echo $locale['273b'].' <strong>'.$submit_data[$submit_date['submit_type']]['submit_locale'].'</strong> ';
+                                            echo timer($submit_date['submit_datestamp']);
+                                            if (!empty($review_link)) {
+                                                echo '<a class="btn btn-sm btn-default m-l-10 pull-right" href="'.$review_link.'">'.$locale['286'].'</a>';
+                                            }
+                                        echo '</div>';
+                                    }
+                                } else { // for 9.0
+                                    foreach ($global_submissions['data'] as $i => $submit_data) {
+                                        $review_link = sprintf($submit_link[$submit_data['submit_type']], $submit_data['submit_id']);
+                                        echo '<div data-id="'.$i.'" class="clearfix p-b-10'.($i > 0 ? ' p-t-10' : '').'"'.($i > 0 ? ' style="border-top: 1px solid #ddd;"' : '').'>';
+                                            echo '<div class="pull-left display-inline-block m-t-0 m-b-0">'.display_avatar($submit_data, '25px', '', FALSE, 'img-rounded m-r-5').'</div>';
+                                            echo '<strong>'.profile_link($submit_data['user_id'], $submit_data['user_name'], $submit_data['user_status']).' </strong>';
+                                            echo $locale['273b'].' <strong>'.$submit_type[$submit_data['submit_type']].'</strong> ';
+                                            echo timer($submit_data['submit_datestamp']);
+                                            if (!empty($review_link)) {
+                                                echo '<a class="btn btn-sm btn-default m-l-10 pull-right" href="'.$review_link.'">'.$locale['286'].'</a>';
+                                            }
+                                        echo '</div>';
+                                    }
                                 }
 
                                 if (isset($global_submissions['submissions_nav'])) {

@@ -31,8 +31,9 @@ use \PHPFusion\News\NewsView;
 class News extends Core {
     public static function Panel() {
         echo '<h3 class="title"><i class="fa fa-bullhorn"></i> '.self::SetLocale('03').'</h3>';
-        if (infusion_exists('news')) {
 
+        $news = function_exists('infusion_exists') ? infusion_exists('news') : db_exists(DB_PREFIX.'news');
+        if ($news) {
             $data = NewsView::News()->get_NewsItem(['limit' => '0,5', 'order' => 'news_datestamp DESC']);
 
             if (!empty($data['news_items'])) {
