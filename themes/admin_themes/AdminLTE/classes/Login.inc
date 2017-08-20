@@ -17,6 +17,10 @@
 +--------------------------------------------------------*/
 namespace AdminLTE;
 
+/**
+ * Class Login
+ * @package AdminLTE
+ */
 class Login extends Components {
     public function __construct() {
         $locale = fusion_get_locale();

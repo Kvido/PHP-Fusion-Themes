@@ -74,23 +74,23 @@ class Dashboard {
                 if ($forum) {
                     echo '<div class="col-xs-'.$mobile.' col-sm-'.$tablet.' col-md-'.$laptop.' col-lg-'.$desktop.' block">';
                         echo '<div class="info-box">';
-                            echo '<span class="info-box-icon"><i class="fa fa-comments"></i></span>';
+                            echo '<span class="info-box-icon bg-light-blue"><i class="fa fa-comments"></i></span>';
                             echo '<div class="info-box-content">';
                                 echo '<strong class="info-box-text">'.$locale['265'].' '.$locale['258'].'</strong>';
 
-                                echo '<div class="pull-left display-inline-block m-r-15">';
+                                echo '<div class="pull-left display-inline-block m-r-5">';
                                     echo '<span class="text-smaller">'.$locale['265'].'</span><br/>';
                                     echo '<h4 class="m-t-0">'.number_format($forum['count']).'</h4>';
                                 echo '</div>';
-                                echo '<div class="pull-left display-inline-block m-r-15">';
+                                echo '<div class="pull-left display-inline-block m-r-5">';
                                     echo '<span class="text-smaller">'.$locale['256'].'</span><br/>';
                                     echo '<h4 class="m-t-0">'.number_format($forum['thread']).'</h4>';
                                 echo '</div>';
-                                echo '<div class="pull-left display-inline-block m-r-15">';
+                                echo '<div class="pull-left display-inline-block m-r-5">';
                                     echo '<span class="text-smaller">'.$locale['259'].'</span><br/>';
                                     echo '<h4 class="m-t-0">'.number_format($forum['post']).'</h4>';
                                 echo '</div>';
-                                echo '<div class="pull-left display-inline-block m-r-15">';
+                                echo '<div class="pull-left display-inline-block m-r-5">';
                                     echo '<span class="text-smaller">'.$locale['260'].'</span><br/>';
                                     echo '<h4 class="m-t-0">'.number_format($forum['users']).'</h4>';
                                 echo '</div>';
@@ -103,18 +103,18 @@ class Dashboard {
                 if ($downloads) {
                     echo '<div class="col-xs-'.$mobile.' col-sm-'.$tablet.' col-md-'.$laptop.' col-lg-'.$desktop.' block">';
                         echo '<div class="info-box">';
-                            echo '<span class="info-box-icon"><i class="fa fa-cloud-download"></i></span>';
+                            echo '<span class="info-box-icon bg-light-blue"><i class="fa fa-cloud-download"></i></span>';
                             echo '<div class="info-box-content">';
                                 echo '<strong class="info-box-text">'.$locale['268'].' '.$locale['258'].'</strong>';
-                                echo '<div class="pull-left display-inline-block m-r-15">';
+                                echo '<div class="pull-left display-inline-block m-r-5">';
                                     echo '<span class="text-smaller">'.$locale['268'].'</span><br/>';
                                     echo '<h4 class="m-t-0">'.number_format($download['download']).'</h4>';
                                 echo '</div>';
-                                echo '<div class="pull-left display-inline-block m-r-15">';
+                                echo '<div class="pull-left display-inline-block m-r-5">';
                                     echo '<span class="text-smaller">'.$locale['257'].'</span><br/>';
                                     echo '<h4 class="m-t-0">'.number_format($download['comment']).'</h4>';
                                 echo '</div>';
-                                echo '<div class="pull-left display-inline-block m-r-15">';
+                                echo '<div class="pull-left display-inline-block m-r-5">';
                                     echo '<span class="text-smaller">'.$locale['254'].'</span><br/>';
                                     echo '<h4 class="m-t-0">'.number_format($download['submit']).'</h4>';
                                 echo '</div>';
@@ -127,18 +127,18 @@ class Dashboard {
                 if ($news) {
                     echo '<div class="col-xs-'.$mobile.' col-sm-'.$tablet.' col-md-'.$laptop.' col-lg-'.$desktop.' block">';
                         echo '<div class="info-box">';
-                            echo '<span class="info-box-icon"><i class="fa fa-newspaper-o"></i></span>';
+                            echo '<span class="info-box-icon bg-light-blue"><i class="fa fa-newspaper-o"></i></span>';
                             echo '<div class="info-box-content">';
                                 echo '<strong class="info-box-text">'.$locale['269'].' '.$locale['258'].'</strong>';
-                                echo '<div class="pull-left display-inline-block m-r-15">';
+                                echo '<div class="pull-left display-inline-block m-r-5">';
                                     echo '<span class="text-smaller">'.$locale['269'].'</span><br/>';
                                     echo '<h4 class="m-t-0">'.number_format($news['news']).'</h4>';
                                 echo '</div>';
-                                echo '<div class="pull-left display-inline-block m-r-15">';
+                                echo '<div class="pull-left display-inline-block m-r-5">';
                                     echo '<span class="text-smaller">'.$locale['257'].'</span><br/>';
                                     echo '<h4 class="m-t-0">'.number_format($news['comment']).'</h4>';
                                 echo '</div>';
-                                echo '<div class="pull-left display-inline-block m-r-15">';
+                                echo '<div class="pull-left display-inline-block m-r-5">';
                                     echo '<span class="text-smaller">'.$locale['254'].'</span><br/>';
                                     echo '<h4 class="m-t-0">'.number_format($news['submit']).'</h4>';
                                 echo '</div>';
@@ -151,18 +151,18 @@ class Dashboard {
                 if ($articles) {
                     echo '<div class="col-xs-'.$mobile.' col-sm-'.$tablet.' col-md-'.$laptop.' col-lg-'.$desktop.' block">';
                         echo '<div class="info-box">';
-                            echo '<span class="info-box-icon"><i class="fa fa-book"></i></span>';
+                            echo '<span class="info-box-icon bg-light-blue"><i class="fa fa-book"></i></span>';
                             echo '<div class="info-box-content">';
                                 echo '<strong class="info-box-text">'.$locale['270'].' '.$locale['258'].'</strong>';
-                                echo '<div class="pull-left display-inline-block m-r-15">';
+                                echo '<div class="pull-left display-inline-block m-r-5">';
                                     echo '<span class="text-smaller">'.$locale['270'].'</span><br/>';
                                     echo '<h4 class="m-t-0">'.number_format($articles['article']).'</h4>';
                                 echo '</div>';
-                                echo '<div class="pull-left display-inline-block m-r-15">';
+                                echo '<div class="pull-left display-inline-block m-r-5">';
                                     echo '<span class="text-smaller">'.$locale['257'].'</span><br/>';
                                     echo '<h4 class="m-t-0">'.number_format($articles['comment']).'</h4>';
                                 echo '</div>';
-                                echo '<div class="pull-left display-inline-block m-r-15">';
+                                echo '<div class="pull-left display-inline-block m-r-5">';
                                     echo '<span class="text-smaller">'.$locale['254'].'</span><br/>';
                                     echo '<h4 class="m-t-0">'.number_format($articles['submit']).'</h4>';
                                 echo '</div>';
@@ -175,18 +175,18 @@ class Dashboard {
                 if ($weblinks) {
                     echo '<div class="col-xs-'.$mobile.' col-sm-'.$tablet.' col-md-'.$laptop.' col-lg-'.$desktop.' block">';
                         echo '<div class="info-box">';
-                            echo '<span class="info-box-icon"><i class="fa fa-link"></i></span>';
+                            echo '<span class="info-box-icon bg-light-blue"><i class="fa fa-link"></i></span>';
                             echo '<div class="info-box-content">';
                                 echo '<strong class="info-box-text">'.$locale['271'].' '.$locale['258'].'</strong>';
-                                echo '<div class="pull-left display-inline-block m-r-15">';
+                                echo '<div class="pull-left display-inline-block m-r-5">';
                                     echo '<span class="text-smaller">'.$locale['271'].'</span><br/>';
                                     echo '<h4 class="m-t-0">'.number_format($weblinks['weblink']).'</h4>';
                                 echo '</div>';
-                                echo '<div class="pull-left display-inline-block m-r-15">';
+                                echo '<div class="pull-left display-inline-block m-r-5">';
                                     echo '<span class="text-smaller">'.$locale['257'].'</span><br/>';
                                     echo '<h4 class="m-t-0">'.number_format($weblinks['comment']).'</h4>';
                                 echo '</div>';
-                                echo '<div class="pull-left display-inline-block m-r-15">';
+                                echo '<div class="pull-left display-inline-block m-r-5">';
                                     echo '<span class="text-smaller">'.$locale['254'].'</span><br/>';
                                     echo '<h4 class="m-t-0">'.number_format($weblinks['submit']).'</h4>';
                                 echo '</div>';
@@ -199,18 +199,18 @@ class Dashboard {
                 if ($gallery) {
                     echo '<div class="col-xs-'.$mobile.' col-sm-'.$tablet.' col-md-'.$laptop.' col-lg-'.$desktop.' block">';
                         echo '<div class="info-box">';
-                            echo '<span class="info-box-icon"><i class="fa fa-camera-retro"></i></span>';
+                            echo '<span class="info-box-icon bg-light-blue"><i class="fa fa-camera-retro"></i></span>';
                             echo '<div class="info-box-content">';
                                 echo '<strong class="info-box-text">'.$locale['272'].' '.$locale['258'].'</strong>';
-                                echo '<div class="pull-left display-inline-block m-r-15">';
+                                echo '<div class="pull-left display-inline-block m-r-5">';
                                     echo '<span class="text-smaller">'.$locale['272'].'</span><br/>';
                                     echo '<h4 class="m-t-0">'.number_format($photos['photo']).'</h4>';
                                 echo '</div>';
-                                echo '<div class="pull-left display-inline-block m-r-15">';
+                                echo '<div class="pull-left display-inline-block m-r-5">';
                                     echo '<span class="text-smaller">'.$locale['257'].'</span><br/>';
                                     echo '<h4 class="m-t-0">'.number_format($photos['comment']).'</h4>';
                                 echo '</div>';
-                                echo '<div class="pull-left display-inline-block m-r-15">';
+                                echo '<div class="pull-left display-inline-block m-r-5">';
                                     echo '<span class="text-smaller">'.$locale['254'].'</span><br/>';
                                     echo '<h4 class="m-t-0">'.number_format($photos['submit']).'</h4>';
                                 echo '</div>';
@@ -223,16 +223,16 @@ class Dashboard {
             echo '<div class="row">';
                 echo '<div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">';
                     echo '<div id="comments">';
-                        openside('<strong class="text-uppercase">'.$locale['277'].'</strong><span class="pull-right badge">'.number_format($global_comments['rows']).'</span>');
+                        openside('<i class="fa fa-comments-o"></i> <strong class="text-uppercase">'.$locale['277'].'</strong><span class="pull-right badge bg-blue">'.number_format($global_comments['rows']).'</span>');
                             if (count($global_comments['data']) > 0) {
                                 foreach ($global_comments['data'] as $i => $comment_data) {
                                     echo '<div data-id="'.$i.'" class="clearfix p-b-10'.($i > 0 ? ' p-t-10' : '').'"'.($i > 0 ? ' style="border-top: 1px solid #ddd;"' : '').'>';
                                         echo '<div id="comment_action-'.$i.'" class="btn-group btn-group-xs pull-right m-t-10">';
-                                            echo '<a class="btn btn-default" title="'.$locale['274'].'" href="'.ADMIN.'comments.php'.$aidlink.'&amp;ctype='.$comment_data['comment_type'].'&amp;comment_item_id='.$comment_data['comment_item_id'].'"><i class="fa fa-eye"></i></a>';
-                                            echo '<a class="btn btn-default" title="'.$locale['275'].'" href="'.ADMIN.'comments.php'.$aidlink.'&amp;action=edit&amp;comment_id='.$comment_data['comment_id'].'&amp;ctype='.$comment_data['comment_type'].'&amp;comment_item_id='.$comment_data['comment_item_id'].'"><i class="fa fa-pencil"></i></a>';
-                                            echo '<a class="btn btn-default" title="'.$locale['276'].'" href="'.ADMIN.'comments.php'.$aidlink.'&amp;action=delete&amp;comment_id='.$comment_data['comment_id'].'&amp;ctype='.$comment_data['comment_type'].'&amp;comment_item_id='.$comment_data['comment_item_id'].'"><i class="fa fa-trash"></i></a>';
+                                            echo '<a class="btn btn-primary" title="'.$locale['274'].'" href="'.ADMIN.'comments.php'.$aidlink.'&amp;ctype='.$comment_data['comment_type'].'&amp;comment_item_id='.$comment_data['comment_item_id'].'"><i class="fa fa-eye"></i></a>';
+                                            echo '<a class="btn btn-warning" title="'.$locale['275'].'" href="'.ADMIN.'comments.php'.$aidlink.'&amp;action=edit&amp;comment_id='.$comment_data['comment_id'].'&amp;ctype='.$comment_data['comment_type'].'&amp;comment_item_id='.$comment_data['comment_item_id'].'"><i class="fa fa-pencil"></i></a>';
+                                            echo '<a class="btn btn-danger" title="'.$locale['276'].'" href="'.ADMIN.'comments.php'.$aidlink.'&amp;action=delete&amp;comment_id='.$comment_data['comment_id'].'&amp;ctype='.$comment_data['comment_type'].'&amp;comment_item_id='.$comment_data['comment_item_id'].'"><i class="fa fa-trash"></i></a>';
                                         echo '</div>';
-                                        echo '<div class="pull-left display-inline-block m-t-0 m-b-0">'.display_avatar($comment_data, '25px', '', FALSE, 'img-rounded m-r-5').'</div>';
+                                        echo '<div class="pull-left display-inline-block m-t-0 m-b-0">'.display_avatar($comment_data, '25px', '', FALSE, 'img-circle m-r-5').'</div>';
                                         echo '<strong>'.profile_link($comment_data['user_id'], $comment_data['user_name'], $comment_data['user_status']).' </strong>';
                                         echo $locale['273'].' <a href="'.sprintf($link_type[$comment_data['comment_type']], $comment_data['comment_item_id']).'"><strong>'.$comments_type[$comment_data['comment_type']].'</strong></a> ';
                                         echo timer($comment_data['comment_datestamp']).'<br/>';
@@ -253,11 +253,11 @@ class Dashboard {
                     echo '</div>'; // #comments
 
                     echo '<div id="ratings">';
-                        openside('<strong class="text-uppercase">'.$locale['278'].'</strong><span class="pull-right badge">'.number_format($global_ratings['rows']).'</span>');
+                        openside('<i class="fa fa-star-o"></i> <strong class="text-uppercase">'.$locale['278'].'</strong><span class="pull-right badge bg-blue">'.number_format($global_ratings['rows']).'</span>');
                             if (count($global_ratings['data']) > 0) {
                                 foreach ($global_ratings['data'] as $i => $ratings_data) {
                                     echo '<div data-id="'.$i.'" class="clearfix p-b-10'.($i > 0 ? ' p-t-10' : '').'"'.($i > 0 ? ' style="border-top: 1px solid #ddd;"' : '').'>';
-                                        echo '<div class="pull-left display-inline-block m-t-0 m-b-0">'.display_avatar($ratings_data, '25px', '', FALSE, 'img-rounded m-r-5').'</div>';
+                                        echo '<div class="pull-left display-inline-block m-t-0 m-b-0">'.display_avatar($ratings_data, '25px', '', FALSE, 'img-circle m-r-5').'</div>';
                                         echo '<strong>'.profile_link($ratings_data['user_id'], $ratings_data['user_name'], $ratings_data['user_status']).' </strong>';
                                         echo $locale['273a'].' <a href="'.sprintf($link_type[$ratings_data['rating_type']], $ratings_data['rating_item_id']).'"><strong>'.$comments_type[$ratings_data['rating_type']].'</strong></a> ';
                                         echo timer($ratings_data['rating_datestamp']);
@@ -277,14 +277,14 @@ class Dashboard {
                     echo '</div>'; // #ratings
 
                     echo '<div id="submissions">';
-                        openside('<strong class="text-uppercase">'.$locale['279'].'</strong><span class="pull-right badge">'.number_format($global_submissions['rows']).'</span>');
+                        openside('<i class="fa fa-cloud-upload"></i> <strong class="text-uppercase">'.$locale['279'].'</strong><span class="pull-right badge bg-blue">'.number_format($global_submissions['rows']).'</span>');
                             if (count($global_submissions['data']) > 0) {
                                 if (!empty($submit_data)) {
                                     foreach ($global_submissions['data'] as $i => $submit_date) {
                                         $review_link = sprintf($submit_data[$submit_date['submit_type']]['admin_link'], $submit_date['submit_id']);
 
                                         echo '<div data-id="'.$i.'" class="clearfix p-b-10'.($i > 0 ? ' p-t-10' : '').'"'.($i > 0 ? ' style="border-top: 1px solid #ddd;"' : '').'>';
-                                            echo '<div class="pull-left display-inline-block m-t-0 m-b-0">'.display_avatar($submit_date, '25px', '', FALSE, 'img-rounded m-r-5').'</div>';
+                                            echo '<div class="pull-left display-inline-block m-t-0 m-b-0">'.display_avatar($submit_date, '25px', '', FALSE, 'img-circle m-r-5').'</div>';
                                             echo '<strong>'.profile_link($submit_date['user_id'], $submit_date['user_name'], $submit_date['user_status']).' </strong>';
                                             echo $locale['273b'].' <strong>'.$submit_data[$submit_date['submit_type']]['submit_locale'].'</strong> ';
                                             echo timer($submit_date['submit_datestamp']);
@@ -322,15 +322,19 @@ class Dashboard {
 
                 echo '<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">';
                     echo '<div id="infusions">';
-                        openside('<strong class="text-uppercase">'.$locale['283'].'</strong><span class="pull-right badge">'.number_format((int)$infusions_count).'</span>');
+                        openside('<i class="fa fa-cubes"></i> <strong class="text-uppercase">'.$locale['283'].'</strong><span class="pull-right badge bg-blue">'.number_format((int)$infusions_count).'</span>');
                             $content = '';
+                            $bg_colors = ['gray', 'red', 'yellow', 'aqua', 'blue', 'light-blue', 'green', 'navy', 'teal', 'olive', 'orange', 'fuschia', 'purple', 'maroon', ''];
+
                             if ($infusions_count > 0) {
                                 if (!empty($global_infusions)) {
                                     foreach ($global_infusions as $inf_id => $inf_data) {
-                                        echo '<span class="badge m-b-10 m-r-5">'.$inf_data['inf_title'].'</span>';
+                                        $color = array_rand($bg_colors);
+
+                                        echo '<span class="badge bg-'.$bg_colors[$color].' m-b-10 m-r-5">'.$inf_data['inf_title'].'</span>';
                                     }
                                 }
-                                $content = checkrights('I') ? '<div class="text-right text-uppercase"><a class="text-smaller" href="'.ADMIN.'infusions.php'.$aidlink.'">'.$locale['285'].' <i class="fa fa-angle-right"></i></a></div>' : '';
+                                $content = checkrights('I') ? '<div class="text-right text-uppercase"><a class="text-smaller" href="'.ADMIN.'infusions.php'.$aidlink.'">'.$locale['285'].' <i class="fa fa-arrow-circle-right"></i></a></div>' : '';
                             } else {
                                 echo '<div class="text-center">'.$locale['284'].'</div>';
                             }

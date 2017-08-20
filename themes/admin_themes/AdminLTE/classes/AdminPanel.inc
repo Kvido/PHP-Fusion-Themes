@@ -20,6 +20,10 @@ namespace AdminLTE;
 use \PHPFusion\Admins;
 use \PHPFusion\OutputHandler;
 
+/**
+ * Class AdminPanel
+ * @package AdminLTE
+ */
 class AdminPanel extends Components {
     public function __construct() {
         OutputHandler::addToHead('<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">');
@@ -204,6 +208,7 @@ class AdminPanel extends Components {
                     echo '<input type="text" id="search_pages" name="search_pages" class="form-control" placeholder="'.$this->SetLocale('005').'">';
                 echo '</div>';
                 echo '<ul class="sidebar-menu" id="search_result" style="display: none;"></ul>';
+                echo '<img id="ajax-loader" style="width: 30px; display: none;" class="img-responsive center-x m-t-10" alt="Ajax Loader" src="'.ADMINLTE.'images/loader.svg"/>';
 
                 $this->SidebarMenu();
 
@@ -212,7 +217,7 @@ class AdminPanel extends Components {
     }
 
     private function SearchAjax() {
-        OutputHandler::addToJQuery('$("#search_pages").bind("keyup", function(e) {
+        OutputHandler::addToJQuery('$("#search_pages").bind("keyup", function (e) {
             var data = {
                 "pagestring": $(this).val(),
                 "url": "'.$_SERVER['REQUEST_URI'].'",
@@ -220,10 +225,12 @@ class AdminPanel extends Components {
 
             $.ajax({
                 url: "'.ADMINLTE.'acp_search.php'.fusion_get_aidlink().'",
-                dataType: "html",
                 method: "get",
                 data: $.param(data),
-                success: function(e) {
+                beforeSend: function () {
+                    $("#ajax-loader").show();
+                },
+                success: function (e) {
                     if ($("#search_pages").val() == "") {
                         $("#adl").show();
                         $("#search_result").html(e).hide();
@@ -232,6 +239,9 @@ class AdminPanel extends Components {
                         $("#search_result").html(e).show();
                         $("#adl").hide();
                     }
+                },
+                complete: function () {
+                    $("#ajax-loader").hide();
                 }
             });
         });');

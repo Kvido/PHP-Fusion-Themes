@@ -299,3 +299,22 @@
         }
     }
 }
+
+.radio-checkbox-color(@color) {
+    input[type=radio],
+    input[type=checkbox] {
+        border-color: @color;
+
+        &:checked:before {
+            color: @color;
+        }
+
+        &:disabled {
+            border-color: lighten(@color, 30%);
+
+            &:checked:before {
+                color: lighten(@color, 30%);
+            }
+        }
+    }
+}

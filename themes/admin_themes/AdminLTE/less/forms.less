@@ -114,3 +114,51 @@
 .form-group-lg .form-control {
     .border-radius(0);
 }
+
+input[type=radio],
+input[type=checkbox] {
+    border: 2px solid @gray-light;
+    -webkit-appearance: none;
+    width: 15px;
+    height: 15px;
+    margin: -3px 0;
+
+    &:focus {
+        outline: none;
+    }
+
+    &:checked:before {
+        font-family: FontAwesome;
+        color: @gray-light;
+        position: absolute;
+    }
+
+    &:disabled {
+        border-color: lighten(@gray-light, 30%);
+
+        &:checked:before {
+            color: lighten(@gray-light, 30%);
+        }
+    }
+}
+
+input[type=checkbox] {
+    .border-radius(2px);
+
+    &:checked:before {
+        font-size: 12px;
+        content: "\f00c";
+        margin-left: -1px;
+    }
+}
+
+input[type=radio] {
+    .border-radius(50%);
+
+    &:checked:before {
+        font-size: 8px;
+        content: "\f111";
+        margin-top: 1.2px;
+        margin-left: 2.2px;
+    }
+}
