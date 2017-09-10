@@ -33,10 +33,10 @@ class Comments extends Core {
         $displayComments = 5;
         $comments_per_page = fusion_get_settings('comments_per_page');
 
-        $result = dbquery("SELECT tc.comment_id, tc.comment_item_id, tc.comment_type, tc.comment_message, tu.user_id, tu.user_name, tu.user_status, tu.user_avatar
+        $result = dbquery("SELECT tc.*, tu.user_id, tu.user_name, tu.user_status, tu.user_avatar
             FROM ".DB_COMMENTS." tc
-            LEFT JOIN ".DB_USERS." tu ON tu.user_id = tc.comment_name
-            WHERE tc.comment_hidden='0'
+            LEFT JOIN ".DB_USERS." tu ON tu.user_id=tc.comment_name
+            WHERE tc.comment_hidden=0
             ORDER BY tc.comment_datestamp DESC
         ");
 
@@ -54,8 +54,8 @@ class Comments extends Core {
                     case 'A':
                         $results = dbquery("SELECT ar.article_subject
                             FROM ".DB_ARTICLES." as ar
-                            INNER JOIN ".DB_ARTICLE_CATS." as ac ON ac.article_cat_id = ar.article_cat
-                            WHERE ar.article_id='".$data['comment_item_id']."' AND ar.article_draft='0'
+                            INNER JOIN ".DB_ARTICLE_CATS." as ac ON ac.article_cat_id=ar.article_cat
+                            WHERE ar.article_id='".$data['comment_item_id']."' AND ar.article_draft=0
                             AND ".groupaccess('ar.article_visibility')."
                             ".(multilang_table('AR') ? " AND ar.article_language='".LANGUAGE."'" : '')."
                             ORDER BY ar.article_datestamp DESC
@@ -63,14 +63,13 @@ class Comments extends Core {
 
                         if (dbrows($results)) {
                             $article_data = dbarray($results);
-                            $commentStart = dbcount("(comment_id)", DB_COMMENTS, "comment_item_id='".$data['comment_item_id']."' AND comment_type='A' AND comment_id<=".$data['comment_id']);
-                            $commentStart = $commentStart > $comments_per_page ? "&amp;c_start_news_comments=".((floor($commentStart / $comments_per_page) * $comments_per_page) - $comments_per_page) : '';
+                            $commentStart = dbcount('(comment_id)', DB_COMMENTS, "comment_item_id='".$data['comment_item_id']."' AND comment_type='A' AND comment_id<=".$data['comment_id']);
+                            $commentStart = $commentStart > $comments_per_page ? '&amp;c_start_news_comments='.((floor($commentStart / $comments_per_page) * $comments_per_page) - $comments_per_page) : '';
 
                             $item = [
-                                'avatar'  => display_avatar($data, '35px', '', TRUE, 'img-circle m-r-10 m-t-5'),
-                                'title'   => $article_data['article_subject'],
-                                'c_url'   => INFUSIONS.'articles/articles.php?article_id='.$data['comment_item_id'].$commentStart.'#c'.$data['comment_id'],
-                                'c_title' => $data['comment_message']
+                                'data'  => $data,
+                                'title' => $article_data['article_subject'],
+                                'c_url' => INFUSIONS.'articles/articles.php?article_id='.$data['comment_item_id'].$commentStart.'#c'.$data['comment_id']
                             ];
 
                             $info[] = $item;
@@ -87,14 +86,13 @@ class Comments extends Core {
 
                         if (dbrows($results)) {
                             $blog_data = dbarray($results);
-                            $commentStart = dbcount("(comment_id)", DB_COMMENTS, "comment_item_id='".$data['comment_item_id']."' AND comment_type='B' AND comment_id<=".$data['comment_id']);
-                            $commentStart = $commentStart > $comments_per_page ? "&amp;c_start_news_comments=".((floor($commentStart / $comments_per_page) * $comments_per_page) - $comments_per_page) : '';
+                            $commentStart = dbcount('(comment_id)', DB_COMMENTS, "comment_item_id='".$data['comment_item_id']."' AND comment_type='B' AND comment_id<=".$data['comment_id']);
+                            $commentStart = $commentStart > $comments_per_page ? '&amp;c_start_news_comments='.((floor($commentStart / $comments_per_page) * $comments_per_page) - $comments_per_page) : '';
 
                             $item = [
-                                'avatar'  => display_avatar($data, '35px', '', TRUE, 'img-circle m-r-10 m-t-5'),
-                                'title'   => $blog_data['blog_subject'],
-                                'c_url'   => INFUSIONS.'blog/blog.php?readmore='.$data['comment_item_id'].$commentStart.'#c'.$data['comment_id'],
-                                'c_title' => $data['comment_message']
+                                'data'  => $data,
+                                'title' => $blog_data['blog_subject'],
+                                'c_url' => INFUSIONS.'blog/blog.php?readmore='.$data['comment_item_id'].$commentStart.'#c'.$data['comment_id']
                             ];
 
                             $info[] = $item;
@@ -104,8 +102,8 @@ class Comments extends Core {
                         $results = dbquery("SELECT ns.news_subject
                             FROM ".DB_NEWS." as ns
                             LEFT JOIN ".DB_NEWS_CATS." as nc ON nc.news_cat_id = ns.news_cat
-                            WHERE ns.news_id='".$data['comment_item_id']."' AND (ns.news_start='0' OR ns.news_start<='".TIME."')
-                            AND (ns.news_end='0' OR ns.news_end>='".TIME."') AND ns.news_draft='0'
+                            WHERE ns.news_id='".$data['comment_item_id']."' AND (ns.news_start=0 OR ns.news_start<='".TIME."')
+                            AND (ns.news_end=0 OR ns.news_end>='".TIME."') AND ns.news_draft=0
                             AND ".groupaccess('ns.news_visibility')."
                             ".(multilang_table('NS') ? "AND ns.news_language='".LANGUAGE."'" : '')."
                             ORDER BY ns.news_datestamp DESC
@@ -113,14 +111,13 @@ class Comments extends Core {
 
                         if (dbrows($results)) {
                             $news_data = dbarray($results);
-                            $commentStart = dbcount("(comment_id)", DB_COMMENTS, "comment_item_id='".$data['comment_item_id']."' AND comment_type='N' AND comment_id<=".$data['comment_id']);
-                            $commentStart = $commentStart > $comments_per_page ? "&amp;c_start_news_comments=".((floor($commentStart / $comments_per_page) * $comments_per_page) - $comments_per_page) : '';
+                            $commentStart = dbcount('(comment_id)', DB_COMMENTS, "comment_item_id='".$data['comment_item_id']."' AND comment_type='N' AND comment_id<=".$data['comment_id']);
+                            $commentStart = $commentStart > $comments_per_page ? '&amp;c_start_news_comments='.((floor($commentStart / $comments_per_page) * $comments_per_page) - $comments_per_page) : '';
 
                             $item = [
-                                'avatar'  => display_avatar($data, '35px', '', TRUE, 'img-circle m-r-10 m-t-5'),
-                                'title'   => $news_data['news_subject'],
-                                'c_url'   => INFUSIONS.'news/news.php?readmore='.$data['comment_item_id'].$commentStart.'#c'.$data['comment_id'],
-                                'c_title' => $data['comment_message']
+                                'data'  => $data,
+                                'title' => $news_data['news_subject'],
+                                'c_url' => INFUSIONS.'news/news.php?readmore='.$data['comment_item_id'].$commentStart.'#c'.$data['comment_id']
                             ];
 
                             $info[] = $item;
@@ -137,14 +134,13 @@ class Comments extends Core {
 
                         if (dbrows($results)) {
                             $photo_data = dbarray($results);
-                            $commentStart = dbcount("(comment_id)", DB_COMMENTS, "comment_item_id='" . $data['comment_item_id'] . "' AND comment_type='P' AND comment_id<=" . $data['comment_id']);
-                            $commentStart = $commentStart > $comments_per_page ? "&amp;c_start_news_comments=" . ((floor($commentStart / $comments_per_page) * $comments_per_page) - $comments_per_page) : '';
+                            $commentStart = dbcount('(comment_id)', DB_COMMENTS, "comment_item_id='" . $data['comment_item_id'] . "' AND comment_type='P' AND comment_id<=" . $data['comment_id']);
+                            $commentStart = $commentStart > $comments_per_page ? '&amp;c_start_news_comments='.((floor($commentStart / $comments_per_page) * $comments_per_page) - $comments_per_page) : '';
 
                             $item = [
-                                'avatar'  => display_avatar($data, '35px', '', TRUE, 'img-circle m-r-10 m-t-5'),
-                                'title'   => $photo_data['photo_title'],
-                                'c_url'   => INFUSIONS.'gallery/gallery.php?photo_id='.$data['comment_item_id'].$commentStart.'#c'.$data['comment_id'],
-                                'c_title' => $data['comment_message']
+                                'data'  => $data,
+                                'title' => $photo_data['photo_title'],
+                                'c_url' => INFUSIONS.'gallery/gallery.php?photo_id='.$data['comment_item_id'].$commentStart.'#c'.$data['comment_id']
                             ];
 
                             $info[] = $item;
@@ -162,14 +158,13 @@ class Comments extends Core {
 
                         if (dbrows($results)) {
                             $download_data = dbarray($results);
-                            $commentStart = dbcount("(comment_id)", DB_COMMENTS, "comment_item_id='".$data['comment_item_id']."' AND comment_type='D' AND comment_id<=".$data['comment_id']);
-                            $commentStart = $commentStart > $comments_per_page ? "&amp;c_start_news_comments=".((floor($commentStart / $comments_per_page) * $comments_per_page) - $comments_per_page) : "";
+                            $commentStart = dbcount('(comment_id)', DB_COMMENTS, "comment_item_id='".$data['comment_item_id']."' AND comment_type='D' AND comment_id<=".$data['comment_id']);
+                            $commentStart = $commentStart > $comments_per_page ? '&amp;c_start_news_comments='.((floor($commentStart / $comments_per_page) * $comments_per_page) - $comments_per_page) : "";
 
                             $item = [
-                                'avatar'  => display_avatar($data, '35px', '', TRUE, 'img-circle m-r-10 m-t-5'),
-                                'title'   => $download_data['download_title'],
-                                'c_url'   => INFUSIONS.'downloads/downloads.php?download_id='.$data['comment_item_id'].$commentStart.'#c'.$data['comment_id'],
-                                'c_title' => $data['comment_message']
+                                'data'  => $data,
+                                'title' => $download_data['download_title'],
+                                'c_url' => INFUSIONS.'downloads/downloads.php?download_id='.$data['comment_item_id'].$commentStart.'#c'.$data['comment_id']
                             ];
 
                             $info[] = $item;
@@ -183,11 +178,12 @@ class Comments extends Core {
             echo '<ul class="list-style-none">';
                 foreach ($info as $id => $data) {
                     echo '<li id="comment-'.$id.'" class="m-t-5">';
-                        echo '<div class="pull-left">'.$data['avatar'].'</div>';
+                        echo '<div class="pull-left">'.display_avatar($data['data'], '35px', '', (!empty($data['data']['user_id']) ? TRUE : FALSE), 'img-circle m-r-10 m-t-5').'</div>';
                         echo '<strong>'.trim_text($data['title'], 40).'</strong>';
-                        echo '<div class="clearfix"><a href="'.$data['c_url'].'">'.trim_text($data['c_title'], 35).'</a></div>';
+                        echo '<div class="clearfix"><a href="'.$data['c_url'].'">'.trim_text($data['data']['comment_message'], 35).'</a></div>';
                     echo '</li>';
                 }
+
             echo '</ul>';
 
         } else {
