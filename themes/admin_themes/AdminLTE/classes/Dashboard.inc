@@ -233,7 +233,7 @@ class Dashboard {
                                             echo '<a class="btn btn-danger" title="'.$locale['276'].'" href="'.ADMIN.'comments.php'.$aidlink.'&amp;action=delete&amp;comment_id='.$comment_data['comment_id'].'&amp;ctype='.$comment_data['comment_type'].'&amp;comment_item_id='.$comment_data['comment_item_id'].'"><i class="fa fa-trash"></i></a>';
                                         echo '</div>';
                                         echo '<div class="pull-left display-inline-block m-t-0 m-b-0">'.display_avatar($comment_data, '25px', '', FALSE, 'img-circle m-r-5').'</div>';
-                                        echo '<strong>'.profile_link($comment_data['user_id'], $comment_data['user_name'], $comment_data['user_status']).' </strong>';
+                                        echo '<strong>'.(!empty($comment_data['user_id']) ? profile_link($comment_data['user_id'], $comment_data['user_name'], $comment_data['user_status']) : $comment_data['comment_name']).' </strong>';
                                         echo $locale['273'].' <a href="'.sprintf($link_type[$comment_data['comment_type']], $comment_data['comment_item_id']).'"><strong>'.$comments_type[$comment_data['comment_type']].'</strong></a> ';
                                         echo timer($comment_data['comment_datestamp']).'<br/>';
                                         $comment = trimlink(parse_textarea($comment_data['comment_message'], FALSE, FALSE), 130);

@@ -1,14 +1,8 @@
 $(function () {
-    'use strict'
+    $("[data-toggle=\"control-sidebar\"]").controlSidebar()
 
-    /**
-     * Get access to plugins
-     */
-
-    $('[data-toggle="control-sidebar"]').controlSidebar()
-
-    var $controlSidebar = $('[data-toggle="control-sidebar"]').data('lte.controlsidebar');
-    var $layout         = $('body').data('lte.layout');
+    var $controlSidebar = $("[data-toggle=\"control-sidebar\"]").data("lte.controlsidebar");
+    var $layout         = $("body").data("lte.layout");
 
     /**
      * List of all the available skins
@@ -16,18 +10,18 @@ $(function () {
      * @type Array
      */
     var mySkins = [
-        'skin-blue',
-        'skin-black',
-        'skin-red',
-        'skin-yellow',
-        'skin-purple',
-        'skin-green',
-        'skin-blue-light',
-        'skin-black-light',
-        'skin-red-light',
-        'skin-yellow-light',
-        'skin-purple-light',
-        'skin-green-light'
+        "skin-blue",
+        "skin-black",
+        "skin-red",
+        "skin-yellow",
+        "skin-purple",
+        "skin-green",
+        "skin-blue-light",
+        "skin-black-light",
+        "skin-red-light",
+        "skin-yellow-light",
+        "skin-purple-light",
+        "skin-green-light"
     ];
 
     /**
@@ -37,7 +31,7 @@ $(function () {
      * @returns String The value of the setting | null
      */
     function get(name) {
-        if (typeof (Storage) !== 'undefined') {
+        if (typeof (Storage) !== "undefined") {
             return localStorage.getItem(name);
         }
     }
@@ -50,7 +44,7 @@ $(function () {
      * @returns void
      */
     function store(name, val) {
-        if (typeof (Storage) !== 'undefined') {
+        if (typeof (Storage) !== "undefined") {
             localStorage.setItem(name, val);
         }
     }
@@ -62,7 +56,7 @@ $(function () {
      * @returns void
      */
     function remove(name) {
-        if (typeof (Storage) !== 'undefined') {
+        if (typeof (Storage) !== "undefined") {
             localStorage.removeItem(name);
         }
     }
@@ -74,7 +68,7 @@ $(function () {
      * @returns void
      */
     function changeLayout(cls) {
-        $('body').toggleClass(cls);
+        $("body").toggleClass(cls);
         $controlSidebar.fix();
     }
 
@@ -85,16 +79,16 @@ $(function () {
      */
     function changeSkin(cls) {
         $.each(mySkins, function (i) {
-            $('body').removeClass(mySkins[i]);
+            $("body").removeClass(mySkins[i]);
         });
 
-        $('body').addClass(cls);
-        store('skin', cls);
+        $("body").addClass(cls);
+        store("skin", cls);
 
-        if (cls.match('light')) {
-            $('.control-sidebar').addClass('control-sidebar-light');
+        if (cls.match("light")) {
+            $(".control-sidebar").addClass("control-sidebar-light");
         } else {
-            $('.control-sidebar').removeClass('control-sidebar-light');
+            $(".control-sidebar").removeClass("control-sidebar-light");
         }
 
         return false;
@@ -106,62 +100,62 @@ $(function () {
      * @returns void
      */
     function setup() {
-        var tmp = get('skin');
+        var tmp = get("skin");
         if (tmp && $.inArray(tmp, mySkins)) changeSkin(tmp);
 
-        if (get('layout-fixed')) changeLayout('fixed');
-        if (get('layout-sidebar-collapse')) changeLayout('sidebar-collapse');
+        if (get("layout-fixed")) changeLayout("fixed");
+        if (get("layout-sidebar-collapse")) changeLayout("sidebar-collapse");
 
         // Add the change skin listener
-        $('[data-skin]').on('click', function (e) {
-            if ($(this).hasClass('knob')) return;
+        $("[data-skin]").on("click", function (e) {
+            if ($(this).hasClass("knob")) return;
             e.preventDefault();
-            changeSkin($(this).data('skin'));
+            changeSkin($(this).data("skin"));
         });
 
         // Add the layout manager
-        $('[data-layout]').on('click', function () {
-            changeLayout($(this).data('layout'));
+        $("[data-layout]").on("click", function () {
+            changeLayout($(this).data("layout"));
 
-            store('layout-' + $(this).data('layout'), $(this).data('layout'));
+            store("layout-" + $(this).data("layout"), $(this).data("layout"));
         });
 
-        $('[data-controlsidebar]').on('click', function () {
-            changeLayout($(this).data('controlsidebar'));
+        $("[data-controlsidebar]").on("click", function () {
+            changeLayout($(this).data("controlsidebar"));
         });
 
-        $('[data-sidebarskin="toggle"]').on('click', function () {
-            var $sidebar = $('.control-sidebar');
-            if ($sidebar.hasClass('control-sidebar-dark')) {
-                $sidebar.removeClass('control-sidebar-dark');
-                $sidebar.addClass('control-sidebar-light');
+        $("[data-sidebarskin=\"toggle\"]").on("click", function () {
+            var $sidebar = $(".control-sidebar");
+            if ($sidebar.hasClass("control-sidebar-dark")) {
+                $sidebar.removeClass("control-sidebar-dark");
+                $sidebar.addClass("control-sidebar-light");
             } else {
-                $sidebar.removeClass('control-sidebar-light');
-                $sidebar.addClass('control-sidebar-dark');
+                $sidebar.removeClass("control-sidebar-light");
+                $sidebar.addClass("control-sidebar-dark");
             }
         });
 
         //  Reset options
-        if ($('body').hasClass('fixed')) {
-            $('[data-layout="fixed"]').attr('checked', 'checked');
+        if ($("body").hasClass("fixed")) {
+            $("[data-layout=\"fixed\"]").attr("checked", "checked");
 
-            $('[data-layout="fixed"]').on('click', function () {
-                remove('layout-fixed');
+            $("[data-layout=\"fixed\"]").on("click", function () {
+                remove("layout-fixed");
             });
         }
 
-        if ($('body').hasClass('sidebar-collapse')) {
-            $('[data-layout="sidebar-collapse"]').attr('checked', 'checked');
+        if ($("body").hasClass("sidebar-collapse")) {
+            $("[data-layout=\sidebar-collapse\"]").attr("checked", "checked");
 
-            $('[data-layout="sidebar-collapse"]').on('click', function () {
-                remove('layout-sidebar-collapse');
+            $("[data-layout=\"sidebar-collapse\"]").on("click", function () {
+                remove("layout-sidebar-collapse");
             });
         }
 
-        var skin = get('skin');
+        var skin = get("skin");
 
-        if (skin && skin.match('light')) {
-            $('.control-sidebar').addClass('control-sidebar-light');
+        if (skin && skin.match("light")) {
+            $(".control-sidebar").addClass("control-sidebar-light");
         }
     }
 
