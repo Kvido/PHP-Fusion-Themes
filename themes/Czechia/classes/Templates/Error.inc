@@ -31,29 +31,15 @@ class Error extends Core {
         $locale = fusion_get_locale();
 
         add_to_head('<style type="text/css">
-            body {
-                background: #0077C0;
-                color: #fff;
-            }
-            .wrapper {
-                margin: 50px auto;
-                max-width: 600px;
-            }
-            .logo {
-                max-height: 120px;
-            }
-            .status {
-                font-size: 5em;
-            }
+            body {background: #0077C0;color: #fff;}
+            .wrapper {margin: 50px auto;max-width: 600px;}
+            .logo {max-height: 120px;}
+            .status {font-size: 5em;}
             @media (min-width: 400px) {
-                .status {
-                    font-size: 7em;
-                }
+                .status {font-size: 7em;}
             }
             @media (min-width: 768px) {
-                .status {
-                    font-size: 10em;
-                }
+                .status {font-size: 10em;}
             }
         </style>');
 

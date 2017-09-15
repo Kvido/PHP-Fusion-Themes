@@ -286,7 +286,7 @@ class Main extends Core {
                         echo '<h3 class="title"><i class="fa fa-info-circle"></i> '.$this->SetLocale('02').'</h3>';
                         echo fusion_get_settings('description');
                         echo '<br/>';
-                        echo stripslashes(strip_tags(fusion_get_settings('footer')));
+                        echo parse_textarea(stripslashes(strip_tags(fusion_get_settings('footer'))));
 
                         if (fusion_get_settings('visitorcounter_enabled')) {
                             echo '<br/>';

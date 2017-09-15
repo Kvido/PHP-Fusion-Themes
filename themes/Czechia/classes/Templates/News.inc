@@ -31,93 +31,22 @@ class News extends Core {
         $locale = fusion_get_locale();
 
         OutputHandler::addToHead('<style type="text/css">
-            figure {
-                margin: 0;
-                padding: 0;
-                border: 0;
-                font-size: 100%;
-                font: inherit;
-                vertical-align: baseline;
-                display: block;
-            }
-            .item {
-                padding: 0;
-                height: inherit;
-            }
-            .item .thumb {
-                float: left;
-                height: inherit;
-                overflow: hidden;
-                margin-right: 10px;
-            }
-            .item .thumb img {
-                width: 100%;
-                max-width: 200px;
-            }
-            .item .post .post-title {
-                margin-bottom: 10px;
-                margin-bottom: .625rem;
-                display: block;
-                font-size: 18px;
-                font-weight: 700;
-            }
-            .item .post .post-title a {
-                color: #1a1a1a;
-            }
-            .item .post .post-title a:hover {
-                color: #0b5fd2;
-            }
+            figure {margin: 0;padding: 0;border: 0;font-size: 100%;font: inherit;vertical-align: baseline;display: block;}
+            .item {padding: 0;height: inherit;}
+            .item .thumb {float: left;height: inherit;overflow: hidden;margin-right: 10px;}
+            .item .thumb img {width: 100%;max-width: 200px;}
+            .item .post .post-title {margin-bottom: 10px;margin-bottom: .625rem;display: block;font-size: 18px;font-weight: 700;}
+            .item .post .post-title a {color: #1a1a1a;}
+            .item .post .post-title a:hover {color: #0b5fd2;}
             @media (min-width: 768px) {
-                .item .thumb {
-                    float: inherit;
-                    height: 150px;
-                    margin-right: inherit;
-                }
-                .item .thumb img {
-                    max-width: 100%;
-                    max-height: 120px;
-                    -webkit-transform: scale(1.1);
-                    -ms-transform: scale(1.1);
-                    -o-transform: scale(1.1);
-                    transform: scale(1.1);
-                    margin-top: -10px;
-                }
-                .item .post .post-title {
-                    margin-bottom: 10px;
-                    padding-bottom: 9px;
-                    border-bottom: 1px solid rgb(241, 241, 241);
-                }
-                .item .post .meta {
-                    margin: 0;
-                    padding: 3px 0 10px;
-                    font-size: 12px;
-                }
-                .item .post .readmore {
-                    background: #046ca0;
-                    text-transform: uppercase;
-                    color: #fff;
-                    padding: 5px 10px;
-                    font-size: 14px;
-                    -webkit-border-radius: 2px;
-                    border-radius: 2px;
-                    display: inline-block;
-                    width: 100%;
-                    text-align: center;
-                }
-                .item .post .readmore:hover {
-                    background: #045a86;
-                }
-                .row.item_ {
-                    display: -webkit-box;
-                    display: -webkit-flex;
-                    display: -ms-flexbox;
-                    display: flex;
-                    flex-wrap: wrap;
-                }
-                .row.item_ > [class*=\'col-\'] {
-                    display: flex;
-                    flex-direction: column;
-                }
+                .item .thumb {float: inherit;height: 150px;margin-right: inherit;}
+                .item .thumb img {max-width: 100%;max-height: 120px;-webkit-transform: scale(1.1);-ms-transform: scale(1.1);-o-transform: scale(1.1);transform: scale(1.1);margin-top: -10px;}
+                .item .post .post-title {margin-bottom: 10px;padding-bottom: 9px;border-bottom: 1px solid rgb(241, 241, 241);}
+                .item .post .meta {margin: 0;padding: 3px 0 10px;font-size: 12px;}
+                .item .post .readmore {background: #046ca0;text-transform: uppercase;color: #fff;padding: 5px 10px;font-size: 14px;-webkit-border-radius: 2px;border-radius: 2px;display: inline-block;width: 100%;text-align: center;}
+                .item .post .readmore:hover {background: #045a86;}
+                .row.item_ {display: -webkit-box;display: -webkit-flex;display: -ms-flexbox;display: flex;flex-wrap: wrap;}
+                .row.item_ > [class*=\'col-\'] {display: flex;flex-direction: column;}
             }
         </style>');
 
@@ -145,6 +74,13 @@ class News extends Core {
                     foreach ($info['news_categories'][0] as $id => $data) {
                         $active = isset($_GET['cat_id']) && $_GET['cat_id'] == $id ? ' class="active"' : '';
                         echo '<li'.$active.'><a href="'.INFUSIONS.'news/news.php?cat_id='.$id.'">'.$data['name'].'</a></li>';
+                    }
+
+                    if (!empty($info['news_categories'][1]) && is_array($info['news_categories'][1])) {
+                        foreach ($info['news_categories'][1] as $id => $data) {
+                            $active = isset($_GET['cat_id']) && $_GET['cat_id'] == $id ? ' class="active"' : '';
+                            echo '<li'.$active.'><a href="'.INFUSIONS.'news/news.php?cat_id='.$id.'">'.$data['name'].'</a></li>';
+                        }
                     }
                 echo '</ul>';
             echo '</div>';
@@ -206,25 +142,18 @@ class News extends Core {
         OutputHandler::addToHead('<link rel="stylesheet" type="text/css" href="'.INCLUDES.'jquery/colorbox/colorbox.css"/>');
         OutputHandler::addToFooter('<script type="text/javascript" src="'.INCLUDES.'jquery/colorbox/jquery.colorbox.js"></script>');
         OutputHandler::addToJQuery('
-            $(document).ready(function() {
-                $(".news-image-overlay").colorbox({
-                    transition: "elasic",
-                    height: "100%",
-                    width: "100%",
-                    maxWidth: "95%",
-                    maxHeight: "95%",
-                    scrolling: false,
-                    overlayClose: true,
-                    close: false,
-                    photo: true,
-                    onComplete: function(result) {
-                        $("#colorbox").live("click", function() {
-                            $(this).unbind("click");
-                            $.fn.colorbox.close();
-                        });
-                    }
-               });
-            });
+            $(".news-image-overlay").colorbox({
+                transition: "elasic",
+                height: "100%",
+                width: "100%",
+                maxWidth: "95%",
+                maxHeight: "95%",
+                scrolling: false,
+                overlayClose: true,
+                close: false,
+                photo: true,
+                onComplete: function(result) {$("#colorbox").live("click", function() {$(this).unbind("click");$.fn.colorbox.close();});}
+           });
         ');
 
         self::Header($info);

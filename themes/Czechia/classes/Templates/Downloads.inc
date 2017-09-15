@@ -29,11 +29,7 @@ class Downloads extends Core {
     public static function render_downloads($info) {
         $locale = fusion_get_locale();
 
-        add_to_head('<style type="text/css">
-            .item .card-footer {
-                margin-top: 10px;
-            }
-        </style>');
+        add_to_head('<style type="text/css">.item .card-footer {margin-top: 10px;}</style>');
 
         echo '<h1 class="text-center">'.$locale['download_1000'].'</h1>';
 

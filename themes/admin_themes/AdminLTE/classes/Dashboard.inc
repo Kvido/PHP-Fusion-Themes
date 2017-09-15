@@ -70,8 +70,8 @@ class Dashboard {
             $desktop = 4;
 
             echo '<div class="row">';
-                $forum = function_exists('infusion_exists') ? infusion_exists('forum') : db_exists(DB_PREFIX.'forums');
-                if ($forum) {
+                $forum_ = function_exists('infusion_exists') ? infusion_exists('forum') : db_exists(DB_PREFIX.'forums');
+                if ($forum_) {
                     echo '<div class="col-xs-'.$mobile.' col-sm-'.$tablet.' col-md-'.$laptop.' col-lg-'.$desktop.' block">';
                         echo '<div class="info-box">';
                             echo '<span class="info-box-icon bg-light-blue"><i class="fa fa-comments"></i></span>';
@@ -99,8 +99,8 @@ class Dashboard {
                     echo '</div>';
                 }
 
-                $downloads = function_exists('infusion_exists') ? infusion_exists('downloads') : db_exists(DB_PREFIX.'downloads');
-                if ($downloads) {
+                $downloads_ = function_exists('infusion_exists') ? infusion_exists('downloads') : db_exists(DB_PREFIX.'downloads');
+                if ($downloads_) {
                     echo '<div class="col-xs-'.$mobile.' col-sm-'.$tablet.' col-md-'.$laptop.' col-lg-'.$desktop.' block">';
                         echo '<div class="info-box">';
                             echo '<span class="info-box-icon bg-light-blue"><i class="fa fa-cloud-download"></i></span>';
@@ -123,8 +123,8 @@ class Dashboard {
                     echo '</div>';
                 }
 
-                $news = function_exists('infusion_exists') ? infusion_exists('news') : db_exists(DB_PREFIX.'news');
-                if ($news) {
+                $news_ = function_exists('infusion_exists') ? infusion_exists('news') : db_exists(DB_PREFIX.'news');
+                if ($news_) {
                     echo '<div class="col-xs-'.$mobile.' col-sm-'.$tablet.' col-md-'.$laptop.' col-lg-'.$desktop.' block">';
                         echo '<div class="info-box">';
                             echo '<span class="info-box-icon bg-light-blue"><i class="fa fa-newspaper-o"></i></span>';
@@ -147,8 +147,8 @@ class Dashboard {
                     echo '</div>';
                 }
 
-                $articles = function_exists('infusion_exists') ? infusion_exists('articles') : db_exists(DB_PREFIX.'articles');
-                if ($articles) {
+                $articles_ = function_exists('infusion_exists') ? infusion_exists('articles') : db_exists(DB_PREFIX.'articles');
+                if ($articles_) {
                     echo '<div class="col-xs-'.$mobile.' col-sm-'.$tablet.' col-md-'.$laptop.' col-lg-'.$desktop.' block">';
                         echo '<div class="info-box">';
                             echo '<span class="info-box-icon bg-light-blue"><i class="fa fa-book"></i></span>';
@@ -171,8 +171,8 @@ class Dashboard {
                     echo '</div>';
                 }
 
-                $weblinks = function_exists('infusion_exists') ? infusion_exists('weblinks') : db_exists(DB_PREFIX.'weblinks');
-                if ($weblinks) {
+                $weblinks_ = function_exists('infusion_exists') ? infusion_exists('weblinks') : db_exists(DB_PREFIX.'weblinks');
+                if ($weblinks_) {
                     echo '<div class="col-xs-'.$mobile.' col-sm-'.$tablet.' col-md-'.$laptop.' col-lg-'.$desktop.' block">';
                         echo '<div class="info-box">';
                             echo '<span class="info-box-icon bg-light-blue"><i class="fa fa-link"></i></span>';
@@ -195,8 +195,8 @@ class Dashboard {
                     echo "</div>";
                 }
 
-                $gallery = function_exists('infusion_exists') ? infusion_exists('gallery') : db_exists(DB_PREFIX.'photos');
-                if ($gallery) {
+                $gallery_ = function_exists('infusion_exists') ? infusion_exists('gallery') : db_exists(DB_PREFIX.'photos');
+                if ($gallery_) {
                     echo '<div class="col-xs-'.$mobile.' col-sm-'.$tablet.' col-md-'.$laptop.' col-lg-'.$desktop.' block">';
                         echo '<div class="info-box">';
                             echo '<span class="info-box-icon bg-light-blue"><i class="fa fa-camera-retro"></i></span>';
