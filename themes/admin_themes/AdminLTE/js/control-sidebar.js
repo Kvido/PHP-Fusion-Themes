@@ -145,7 +145,7 @@ $(function () {
         }
 
         if ($("body").hasClass("sidebar-collapse")) {
-            $("[data-layout=\sidebar-collapse\"]").attr("checked", "checked");
+            $("[data-layout=\"sidebar-collapse\"]").attr("checked", "checked");
 
             $("[data-layout=\"sidebar-collapse\"]").on("click", function () {
                 remove("layout-sidebar-collapse");
