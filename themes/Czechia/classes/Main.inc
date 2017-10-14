@@ -298,7 +298,8 @@ class Main extends Core {
                         Footer\Comments::Panel();
                     echo '</div>';
 
-                    if (infusion_exists('news')) {
+                    $news = function_exists('infusion_exists') ? infusion_exists('news') : db_exists(DB_PREFIX.'news');
+                    if ($news) {
                         echo '<div class="col-xs-12 col-sm-'.$grid.' col-md-'.$grid.' col-lg-'.$grid.'">';
                             Footer\News::Panel();
                         echo '</div>';
