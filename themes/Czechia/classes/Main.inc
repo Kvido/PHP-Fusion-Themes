@@ -146,7 +146,7 @@ class Main extends Core {
 
                             if (count($languages) > 1) {
                                 echo '<li class="dropdown language-switcher">';
-                                    echo '<a href="#" class="dropdown-toggle pointer" data-toggle="dropdown">';
+                                    echo '<a href="#" class="dropdown-toggle pointer" data-toggle="dropdown" title="'.LANGUAGE.'">';
                                         echo '<i class="fa fa-globe"></i> ';
                                         echo '<img class="current" style="margin-top: -5px;" src="'.BASEDIR.'locale/'.LANGUAGE.'/'.LANGUAGE.'-s.png" alt="'.translate_lang_names(LANGUAGE).'"/>';
                                         echo '<span class="caret"></span>';
@@ -202,15 +202,13 @@ class Main extends Core {
                                 );
 
                                 if ($msg_count > 0) {
-                                    $messages_count = '<span class="label label-danger msg-count">';
-                                    $messages_count .= $msg_count;
-                                    $messages_count .= '</span>';
+                                    $messages_count = '<span class="label label-danger msg-count">'.$msg_count.'</span>';
                                 }
 
-                                echo '<li><a href="'.BASEDIR.'messages.php"><i class="fa fa-envelope fa-fw"></i> '.$locale['UM081'].'</a>'.$messages_count.'</li>';
+                                echo '<li><a href="'.BASEDIR.'messages.php" title="'.$locale['UM081'].'"><i class="fa fa-envelope fa-fw"></i>'.$messages_count.'</a></li>';
 
                                 if (iADMIN) {
-                                    echo '<li><a href="'.ADMIN.'index.php'.fusion_get_aidlink().'&pagenum=0"><i class="fa fa-dashboard"></i> '.$locale['global_123'].'</a></li>';
+                                    echo '<li><a href="'.ADMIN.'index.php'.fusion_get_aidlink().'&pagenum=0" title="'.$locale['global_123'].'"><i class="fa fa-dashboard"></i></a></li>';
                                 }
                             } else {
                                 echo '<li class="dropdown loginform">';

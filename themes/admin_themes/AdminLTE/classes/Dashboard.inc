@@ -364,8 +364,8 @@ class Dashboard {
                     echo '<div class="icon-wrapper col-xs-6 col-sm-2 col-md-2 col-lg-2">';
                     if ($admin_images) {
                         echo '<a class="btn btn-app" href="'.$data['admin_link'].$aidlink.'">';
-                        echo '<img class="display-block" src="'.get_image('ac_'.$data['admin_rights']).'" alt="'.$data['admin_title'].'"/>';
-                        echo '<span>'.$data['admin_title'].'</span>';
+                            echo '<img class="display-block" src="'.get_image('ac_'.$data['admin_rights']).'" alt="'.$data['admin_title'].'"/>';
+                            echo '<span>'.$data['admin_title'].'</span>';
                         echo '</a>';
                     } else {
                         echo '<span class="small"><a href="'.$data['admin_link'].$aidlink.'">'.$data['admin_title'].'</a></span>';
