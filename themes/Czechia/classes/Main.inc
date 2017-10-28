@@ -194,13 +194,13 @@ class Main extends Core {
                                     echo '</ul>';
                                 echo '</li>';
 
-                                $messages_count = '';
                                 $msg_count = dbcount(
                                     "('message_id')",
                                     DB_MESSAGES, "message_to=:my_id AND message_read=:unread AND message_folder=:inbox",
                                     [':inbox' => 0, ':my_id' => fusion_get_userdata('user_id'), ':unread' => 0]
                                 );
 
+                                $messages_count = '';
                                 if ($msg_count > 0) {
                                     $messages_count = '<span class="label label-danger msg-count">'.$msg_count.'</span>';
                                 }
