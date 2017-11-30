@@ -66,7 +66,9 @@ class Main extends Core {
                 'show_header'  => $icon.$logo
             ];
 
-            echo SiteLinks::setSubLinks($menu_options)->showSubLinks();
+            echo '<div style="min-height: 60px;">';
+                echo SiteLinks::setSubLinks($menu_options)->showSubLinks();
+            echo '</div>';
         }
 
         echo '<main id="main-container" class="clearfix">';
