@@ -92,18 +92,17 @@ function render_news_item($info) {
 
 /**
  * Profile
- * @param $info
  */
-function display_user_profile($info) {
-    CzechiaTheme\Templates\Profile::DisplayProfile($info);
+function display_user_profile() {
+    CzechiaTheme\Templates\Profile::DisplayProfile();
 }
 
-function display_user_field($info) {
-    CzechiaTheme\Templates\Profile::Field($info);
+function display_user_field() {
+    CzechiaTheme\Templates\Profile::Field();
 }
 
-function display_profile_form($info) {
-    CzechiaTheme\Templates\Profile::EditProfile($info);
+function display_profile_form() {
+    CzechiaTheme\Templates\Profile::EditProfile();
 }
 
 set_image('imagenotfound', fusion_get_settings('siteurl').'themes/Czechia/images/noimage.svg');

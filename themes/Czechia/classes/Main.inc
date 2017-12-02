@@ -29,8 +29,6 @@ use \PHPFusion\SiteLinks;
  */
 class Main extends Core {
     public function __construct() {
-        $locale = fusion_get_locale();
-
         if ($this->GetParam('header') == TRUE) {
             $url = fusion_get_settings('siteurl').'themes/Czechia/assets/';
             OutputHandler::addToFooter('<script type="text/javascript" src="'.$url.'js/scripts.min.js"></script>');

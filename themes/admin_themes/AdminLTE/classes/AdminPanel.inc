@@ -51,7 +51,6 @@ class AdminPanel extends Components {
     }
 
     private function MainHeader() {
-        $locale = fusion_get_locale();
         $aidlink = fusion_get_aidlink();
         $sections = Admins::getInstance()->getAdminSections();
         $languages = fusion_get_enabled_languages();

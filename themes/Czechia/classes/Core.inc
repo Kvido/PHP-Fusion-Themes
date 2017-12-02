@@ -42,6 +42,8 @@ class Core {
             print_p($name);
             debug_print_backtrace();
         }
+
+        return NULL;
     }
 
     /**

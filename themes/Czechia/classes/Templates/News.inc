@@ -31,11 +31,11 @@ class News extends Core {
         $locale = fusion_get_locale();
 
         OutputHandler::addToHead('<style type="text/css">
-            figure {margin: 0;padding: 0;border: 0;font-size: 100%;font: inherit;vertical-align: baseline;display: block;}
+            figure {margin: 0;padding: 0;border: 0;font: inherit;vertical-align: baseline;display: block;}
             .item {padding: 0;height: inherit;}
             .item .thumb {float: left;height: inherit;overflow: hidden;margin-right: 10px;}
             .item .thumb img {width: 100%;max-width: 200px;}
-            .item .post .post-title {margin-bottom: 10px;margin-bottom: .625rem;display: block;font-size: 18px;font-weight: 700;}
+            .item .post .post-title {margin-bottom: .625rem;display: block;font-size: 18px;font-weight: 700;}
             .item .post .post-title a {color: #1a1a1a;}
             .item .post .post-title a:hover {color: #0b5fd2;}
             @media (min-width: 768px) {
@@ -136,7 +136,6 @@ class News extends Core {
 
     public static function render_news_item($info) {
         $locale = fusion_get_locale();
-        $news_settings = NewsServer::get_news_settings();
         $data = $info['news_item'];
 
         OutputHandler::addToHead('<link rel="stylesheet" type="text/css" href="'.INCLUDES.'jquery/colorbox/colorbox.css"/>');

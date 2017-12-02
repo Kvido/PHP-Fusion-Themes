@@ -25,7 +25,7 @@ use CzechiaTheme\Core;
  * @package CzechiaTheme\Templates
  */
 class Profile extends Core {
-    public static function DisplayProfile($info) {
+    public static function DisplayProfile() {
         ?>
         <section class="card">
             {%tab_header%}
@@ -49,7 +49,7 @@ class Profile extends Core {
         <?php
     }
 
-    public static function Field($info) {
+    public static function Field() {
         ?>
         <div id="{%field_id%}" class="row">
             <label class="col-xs-12 col-sm-3"><strong>{%field_title%}</strong></label>
@@ -58,7 +58,7 @@ class Profile extends Core {
         <?php
     }
 
-    public static function EditProfile($info) {
+    public static function EditProfile() {
         echo '<div class="card">';
             echo '{%tab_header%}';
                 echo '{%open_form%}';

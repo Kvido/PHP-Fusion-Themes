@@ -19,7 +19,6 @@ namespace CzechiaTheme\Templates;
 
 use CzechiaTheme\Core;
 use CzechiaTheme\Main;
-use \PHPFusion\Panels;
 
 /**
  * Class Error

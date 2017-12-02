@@ -45,8 +45,6 @@ class Downloads extends Core {
     }
 
     private static function display_download_index($info) {
-        global $dl_settings;
-
         $locale = fusion_get_locale();
 
         if (!empty($info['download_cat_description'])) {
@@ -243,9 +241,9 @@ class Downloads extends Core {
         echo '<ul class="list-style-none m-b-20">';
         echo '<li><a title="'.$locale['download_1001'].'" href="'.DOWNLOADS.'downloads.php"><span>'.$locale['download_1001'].'</span></a></li>';
 
-        $filter = $info['download_filter'];
+        $filter_ = $info['download_filter'];
 
-        foreach ($filter as $filter_key => $filter) {
+        foreach ($filter_ as $filter_key => $filter) {
             $active = isset($_GET['type']) && $_GET['type'] === $filter_key ? ' class="active strong"' : '';
             echo '<li'.$active.'><a href="'.$filter['link'].'">'.$filter['title'].'</a></li>';
         }
