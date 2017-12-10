@@ -32,13 +32,13 @@ class Main extends Core {
         if ($this->GetParam('header') == TRUE) {
             $url = fusion_get_settings('siteurl').'themes/Czechia/assets/';
             OutputHandler::addToFooter('<script type="text/javascript" src="'.$url.'js/scripts.min.js"></script>');
-            OutputHandler::addToHead('<link rel="stylesheet" type="text/css" href="'.$url.'scrollbar/jquery.mCustomScrollbar.min.css"/>');
-            OutputHandler::addToFooter('<script type="text/javascript" src="'.$url.'scrollbar/jquery.mCustomScrollbar.min.js"></script>');
+            OutputHandler::addToHead('<link rel="stylesheet" type="text/css" href="'.$url.'mCustomScrollbar/jquery.mCustomScrollbar.min.css"/>');
+            OutputHandler::addToFooter('<script type="text/javascript" src="'.$url.'mCustomScrollbar/jquery.mCustomScrollbar.min.js"></script>');
             OutputHandler::addToJQuery('
                 $(".leftmenu .left-content").mCustomScrollbar({
-                    theme: "dark-thick",
+                    theme: "dark-2",
                     axis: "y",
-                    scrollInertia: 500,
+                    scrollInertia: 550,
                     mouseWheel: {
                         enable: !0,
                         axis: "y",
@@ -165,32 +165,31 @@ class Main extends Core {
 
                             if (iMEMBER) {
                                 echo '<li class="dropdown">';
-                                    echo '<a href="#" class="dropdown-toggle pointer" data-toggle="dropdown">';
-                                        echo $userdata['user_name'];
+                                    echo '<a href="#" title="'.$userdata['user_name'].'" class="dropdown-toggle pointer" data-toggle="dropdown">';
                                         echo display_avatar($userdata, '18px', '', FALSE, 'img-circle m-l-5 link-avatar');
                                         echo ' <span class="caret"></span>';
                                     echo '</a>';
 
+                                    $user_url = BASEDIR.'profile.php?lookup='.$userdata['user_id'];
+
                                     echo '<ul class="dropdown-menu dropdown-user" role="menu">';
-                                        echo '<li class="user-information">';
-                                            echo '<div class="media">';
-                                                $url = BASEDIR.'profile.php?lookup='.$userdata['user_id'];
-                                                echo '<a class="pull-left m-r-10" style="width: 60px; height: 60px;" href="'.$url.'">';
-                                                echo display_avatar($userdata, '60px', '', FALSE, 'img-circle');
-                                                echo '</a>';
-                                                echo '<div class="media-body">';
-                                                    echo '<h4 class="media-heading">'.$userdata['user_name'].'</h4>';
-                                                    echo '<h5 class="m-t-5">'.getuserlevel($userdata['user_level']).'</h5>';
-                                                    echo '<h6>'.self::SetLocale('01').': '.$userdata['user_ip'].'</h6>';
+                                        echo '<li><div class="navbar-login">';
+                                            echo '<div class="row">';
+                                                echo '<div class="col-sm-4"><p>';
+                                                    echo display_avatar($userdata, '87px', '', FALSE, 'img-circle m-t-5 m-l-10');
+                                                echo '</p></div>';
+                                                echo '<div class="col-sm-8">';
+                                                    echo '<p class="text-left"><strong>'.$userdata['user_name'].'</strong></p>';
+                                                    echo '<p class="text-left small">'.getuserlevel($userdata['user_level']).'</p>';
+                                                    echo '<div class="btn-group btn-group-sm btn-group-justified">';
+                                                        echo '<a href="'.$user_url.'" class="btn btn-primary">'.$locale['view'].' '.$locale['profile'].'</a>';
+                                                        echo '<a href="'.BASEDIR.'edit_profile.php" class="btn btn-warning">'.$locale['UM080'].'</a>';
+                                                    echo '</div>';
                                                 echo '</div>';
                                             echo '</div>';
-                                        echo '</li>';
-                                        echo '<li class="divider"></li>';
-                                        echo '<li><a href="'.BASEDIR.'edit_profile.php"><i class="fa fa-pencil fa-fw"></i> '.$locale['UM080'].'</a></li>';
-                                        echo '<li class="divider"></li>';
-                                        echo '<li><a href="'.BASEDIR.'profile.php?lookup='.$userdata['user_id'].'"><i class="fa fa-eye fa-fw"></i> '.$locale['view'].' '.$locale['profile'].'</a></li>';
-                                        echo '<li class="divider"></li>';
-                                        echo '<li><a href="'.BASEDIR.'index.php?logout=yes"><i class="fa fa-sign-out fa-fw"></i> <span class="text-danger">'.$locale['logout'].'</span></a></li>';
+                                        echo '</div></li>';
+                                        echo '<li class="divider m-b-0"></li>';
+                                        echo '<li><p class="m-0 p-10 p-b-5"><a href="'.BASEDIR.'index.php?logout=yes" class="btn btn-danger btn-sm btn-block"><i class="fa fa-sign-out fa-fw"></i> '.$locale['logout'].'</a></p></li>';
                                     echo '</ul>';
                                 echo '</li>';
 

@@ -20,7 +20,7 @@ if (!defined('IN_FUSION')) {
 }
 
 require_once INCLUDES.'theme_functions_include.php';
-require_once THEME.'theme_autoloader.php';
+require_once 'theme_autoloader.php';
 define('THEME_BULLET', '<i class="fa fa-circle"></i>');
 
 /**
@@ -107,12 +107,6 @@ function display_profile_form() {
 
 set_image('imagenotfound', fusion_get_settings('siteurl').'themes/Czechia/images/noimage.svg');
 
-/**
- * @param string $output
- * @return mixed
- */
-function replace_meta($output = '') {
+\PHPFusion\OutputHandler::addHandler(function ($output = '') {
     return preg_replace("/<meta name='theme-color' content='#ffffff'>/i", '<meta name="theme-color" content="#196496"/>', $output);
-}
-
-\PHPFusion\OutputHandler::addHandler('replace_meta');
+});
