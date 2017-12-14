@@ -243,7 +243,9 @@ class Main extends Core {
             $action_url = cleanurl(urldecode($_GET['redirect']));
         }
 
-        echo openform('loginform', 'post', $action_url);
+        $html = '';
+
+        $html .= openform('loginform', 'post', $action_url, ['form_id' => 'login-form']);
         switch (fusion_get_settings('login_method')) {
             case 2:
                 $placeholder = $locale['global_101c'];
@@ -255,14 +257,14 @@ class Main extends Core {
                 $placeholder = $locale['global_101a'];
         }
 
-        echo form_text('user_name', '', '', ['placeholder' => $placeholder, 'required' => TRUE]);
-        echo form_text('user_pass', '', '', ['placeholder' => $locale['global_102'], 'type' => 'password', 'required' => TRUE]);
-        echo '<label><input type="checkbox" name="remember_me" value="y"/> '.$locale['global_103'].'</label>';
-        echo form_button('login', $locale['global_104'], '', [
-            'class' => 'm-t-10 m-b-10 btn-block btn-primary',
-            'icon' => 'fa fa-sign-in'
-        ]);
-        echo closeform();
+        $html .= form_text('user_name', '', '', ['placeholder' => $placeholder, 'required' => TRUE, 'input_id' => 'username']);
+        $html .= form_text('user_pass', '', '', ['placeholder' => $locale['global_102'], 'type' => 'password', 'required' => TRUE, 'input_id' => 'userpassword']);
+        $html .= form_checkbox('remember_me', $locale['global_103'], '', ['value' => 'y', 'reverse_label' => TRUE, 'input_id' => 'rememberme']);
+        $html .= form_button('login', $locale['global_104'], '', ['class' => 'btn-primary m-t-5 m-b-5', 'icon' => 'fa fa-sign-in', 'input_id' => 'loginbtn']);
+        $html .= str_replace(['[LINK]', '[/LINK]'], ['<a href="'.BASEDIR.'lostpassword.php">', '</a>'], $locale['global_106']);
+        $html .= closeform();
+
+        return $html;
     }
 
     private function Footer() {

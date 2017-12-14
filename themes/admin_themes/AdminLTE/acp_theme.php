@@ -20,7 +20,6 @@ if (!defined('IN_FUSION')) {
 }
 
 define('ADMINLTE', THEMES.'admin_themes/AdminLTE/');
-require_once INCLUDES.'theme_functions_include.php';
 require_once ADMINLTE.'acp_autoloader.php';
 
 define('BOOTSTRAP', TRUE);
