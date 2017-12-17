@@ -313,109 +313,110 @@ class AdminPanel extends Components {
 
     private function ControlSidebar() {
         OutputHandler::addToFooter('<script type="text/javascript" src="'.ADMINLTE.'js/control-sidebar.min.js"></script>');
+        ?>
+        <aside class="control-sidebar control-sidebar-dark">
+            <div class="content">
+                <h4 class="control-sidebar-heading"><?php echo $this->SetLocale('008'); ?></h4>
 
-        echo '<aside class="control-sidebar control-sidebar-dark">';
-            echo '<div class="content">';
-                echo '<h4 class="control-sidebar-heading">'.$this->SetLocale('008').'</h4>';
+                <div class="form-group">
+                    <label class="control-sidebar-subheading">
+                        <input type="checkbox" data-layout="fixed" class="pull-right"> <?php echo $this->SetLocale('009'); ?>
+                    </label>
+                </div>
 
-                echo '<div class="form-group">';
-                    echo '<label class="control-sidebar-subheading">';
-                        echo '<input type="checkbox" data-layout="fixed" class="pull-right"> '.$this->SetLocale('009');
-                    echo '</label>';
-                echo '</div>';
+                <div class="form-group">
+                    <label class="control-sidebar-subheading">
+                        <input type="checkbox" data-layout="sidebar-collapse" class="pull-right"> <?php echo $this->SetLocale('010'); ?>
+                    </label>
+                </div>
 
-                echo '<div class="form-group">';
-                    echo '<label class="control-sidebar-subheading">';
-                        echo '<input type="checkbox" data-layout="sidebar-collapse" class="pull-right"> '.$this->SetLocale('010');
-                    echo '</label>';
-                echo '</div>';
+                <h4 class="control-sidebar-heading"><?php echo $this->SetLocale('011'); ?></h4>
+                <h5><?php echo $this->SetLocale('012'); ?></h5>
 
-                echo '<h4 class="control-sidebar-heading">'.$this->SetLocale('011').'</h4>';
-                echo '<h5>'.$this->SetLocale('012').'</h5>';
+                <ul class="list-unstyled clearfix">
+                    <li class="skin-preview">
+                        <a href="javascript:void(0)" data-skin="skin-blue" class="clearfix full-opacity-hover skin">
+                            <div><span class="header-left" style="background: #367fa9;"></span><span class="bg-light-blue header-right"></span></div>
+                            <div><span class="body-left" style="background: #222d32;"></span><span class="body-right" style="background: #f4f5f7;"></span></div>
+                        </a>
+                    </li>
+                    <li class="skin-preview">
+                        <a href="javascript:void(0)" data-skin="skin-black" class="clearfix full-opacity-hover skin">
+                            <div style="box-shadow: 0 0 2px rgba(0,0,0,0.1);" class="clearfix"><span class="header-left" style="background: #fefefe;"></span><span class="header-right" style="background: #fefefe;"></span></div>
+                            <div><span class="body-left" style="background: #222;"></span><span class="body-right" style="background: #f4f5f7;"></span></div>
+                        </a>
+                    </li>
+                    <li class="skin-preview">
+                        <a href="javascript:void(0)" data-skin="skin-purple" class="clearfix full-opacity-hover skin">
+                            <div><span class="header-left bg-purple-active"></span><span class="bg-purple header-right"></span></div>
+                            <div><span class="body-left" style="background: #222d32;"></span><span class="body-right" style="background: #f4f5f7;"></span></div>
+                        </a>
+                    </li>
+                    <li class="skin-preview">
+                        <a href="javascript:void(0)" data-skin="skin-green" class="clearfix full-opacity-hover skin">
+                            <div><span class="header-left bg-green-active"></span><span class="bg-green header-right"></span></div>
+                            <div><span class="body-left" style="background: #222d32;"></span><span class="body-right" style="background: #f4f5f7;"></span></div>
+                        </a>
+                    </li>
+                    <li class="skin-preview">
+                        <a href="javascript:void(0)" data-skin="skin-red" class="clearfix full-opacity-hover skin">
+                            <div><span class="header-left bg-red-active"></span><span class="bg-red header-right"></span></div>
+                            <div><span class="body-left" style="background: #222d32;"></span><span class="body-right" style="background: #f4f5f7;"></span></div>
+                        </a>
+                    </li>
+                    <li class="skin-preview">
+                        <a href="javascript:void(0)" data-skin="skin-yellow" class="clearfix full-opacity-hover skin">
+                            <div><span class="header-left bg-yellow-active"></span><span class="bg-yellow header-right"></span></div>
+                            <div><span class="body-left" style="background: #222d32;"></span><span class="body-right" style="background: #f4f5f7;"></span></div>
+                        </a>
+                    </li>
+                </ul>
 
-                echo '<ul class="list-unstyled clearfix">';
-                    echo '<li class="skin-preview">';
-                        echo '<a href="javascript:void(0)" data-skin="skin-blue" class="clearfix full-opacity-hover skin">';
-                            echo '<div><span class="header-left" style="background: #367fa9"></span><span class="bg-light-blue header-right"></span></div>';
-                            echo '<div><span class="body-left" style="background: #222d32"></span><span class="body-right" style="background: #f4f5f7"></span></div>';
-                        echo '</a>';
-                    echo '</li>';
-                    echo '<li class="skin-preview">';
-                        echo '<a href="javascript:void(0)" data-skin="skin-black" class="clearfix full-opacity-hover skin">';
-                            echo '<div style="box-shadow: 0 0 2px rgba(0,0,0,0.1)" class="clearfix"><span class="header-left" style="background: #fefefe"></span><span class="header-right" style="background: #fefefe"></span></div>';
-                            echo '<div><span class="body-left" style="background: #222"></span><span class="body-right" style="background: #f4f5f7"></span></div>';
-                        echo '</a>';
-                    echo '</li>';
-                    echo '<li class="skin-preview">';
-                        echo '<a href="javascript:void(0)" data-skin="skin-purple" class="clearfix full-opacity-hover skin">';
-                            echo '<div><span class="header-left bg-purple-active"></span><span class="bg-purple header-right"></span></div>';
-                            echo '<div><span class="body-left" style="background: #222d32"></span><span class="body-right" style="background: #f4f5f7"></span></div>';
-                        echo '</a>';
-                    echo '</li>';
-                    echo '<li class="skin-preview">';
-                        echo '<a href="javascript:void(0)" data-skin="skin-green" class="clearfix full-opacity-hover skin">';
-                            echo '<div><span class="header-left bg-green-active"></span><span class="bg-green header-right"></span></div>';
-                            echo '<div><span class="body-left" style="background: #222d32"></span><span class="body-right" style="background: #f4f5f7"></span></div>';
-                        echo '</a>';
-                    echo '</li>';
-                    echo '<li class="skin-preview">';
-                        echo '<a href="javascript:void(0)" data-skin="skin-red" class="clearfix full-opacity-hover skin">';
-                            echo '<div><span class="header-left bg-red-active"></span><span class="bg-red header-right"></span></div>';
-                            echo '<div><span class="body-left" style="background: #222d32"></span><span class="body-right" style="background: #f4f5f7"></span></div>';
-                        echo '</a>';
-                    echo '</li>';
-                    echo '<li class="skin-preview">';
-                        echo '<a href="javascript:void(0)" data-skin="skin-yellow" class="clearfix full-opacity-hover skin">';
-                            echo '<div><span class="header-left bg-yellow-active"></span><span class="bg-yellow header-right"></span></div>';
-                            echo '<div><span class="body-left" style="background: #222d32"></span><span class="body-right" style="background: #f4f5f7"></span></div>';
-                        echo '</a>';
-                    echo '</li>';
-                echo '</ul>';
+                <h5><?php echo $this->SetLocale('013'); ?></h5>
 
-                echo '<h5>'.$this->SetLocale('013').'</h5>';
+                <ul class="list-unstyled clearfix">
+                    <li class="skin-preview">
+                        <a href="javascript:void(0)" data-skin="skin-blue-light" class="clearfix full-opacity-hover skin">
+                            <div><span class="header-left" style="background: #367fa9;"></span><span class="bg-light-blue header-right"></span></div>
+                            <div><span class="body-left" style="background: #f9fafc;"></span><span class="body-right" style="background: #f4f5f7;"></span></div>
+                        </a>
+                    </li>
+                    <li class="skin-preview">
+                        <a href="javascript:void(0)" data-skin="skin-black-light" class="clearfix full-opacity-hover skin">
+                            <div style="box-shadow: 0 0 2px rgba(0,0,0,0.1);" class="clearfix"><span class="header-left" style="background: #fefefe;"></span><span class="header-right" style="background: #fefefe;"></span></div>
+                            <div><span class="body-left" style="background: #f9fafc;"></span><span class="body-right" style="background: #f4f5f7;"></span></div>
+                        </a>
+                    </li>
+                    <li class="skin-preview">
+                        <a href="javascript:void(0)" data-skin="skin-purple-light" class="clearfix full-opacity-hover skin">
+                            <div><span class="header-left bg-purple-active"></span><span class="bg-purple header-right"></span></div>
+                            <div><span class="body-left" style="background: #f9fafc;"></span><span class="body-right" style="background: #f4f5f7;"></span></div>
+                        </a>
+                    </li>
+                    <li class="skin-preview">
+                        <a href="javascript:void(0)" data-skin="skin-green-light" class="clearfix full-opacity-hover skin">
+                            <div><span class="header-left bg-green-active"></span><span class="bg-green header-right"></span></div>
+                            <div><span class="body-left" style="background: #f9fafc;"></span><span class="body-right" style="background: #f4f5f7;"></span></div>
+                        </a>
+                    </li>
+                    <li class="skin-preview">
+                        <a href="javascript:void(0)" data-skin="skin-red-light" class="clearfix full-opacity-hover skin">
+                            <div><span class="header-left bg-red-active"></span><span class="bg-red header-right"></span></div>
+                            <div><span class="body-left" style="background: #f9fafc;"></span><span class="body-right" style="background: #f4f5f7;"></span></div>
+                        </a>
+                    </li>
+                    <li class="skin-preview">
+                        <a href="javascript:void(0)" data-skin="skin-yellow-light" class="clearfix full-opacity-hover skin">
+                            <div><span class="header-left bg-yellow-active"></span><span class="bg-yellow header-right"></span></div>
+                            <div><span class="body-left" style="background: #f9fafc;"></span><span class="body-right" style="background: #f4f5f7;"></span></div>
+                        </a>
+                    </li>
+                </ul>
 
-                echo '<ul class="list-unstyled clearfix">';
-                    echo '<li class="skin-preview">';
-                        echo '<a href="javascript:void(0)" data-skin="skin-blue-light" class="clearfix full-opacity-hover skin">';
-                            echo '<div><span class="header-left" style="background: #367fa9"></span><span class="bg-light-blue header-right"></span></div>';
-                            echo '<div><span class="body-left" style="background: #f9fafc"></span><span class="body-right" style="background: #f4f5f7"></span></div>';
-                        echo '</a>';
-                    echo '</li>';
-                    echo '<li class="skin-preview">';
-                        echo '<a href="javascript:void(0)" data-skin="skin-black-light" class="clearfix full-opacity-hover skin">';
-                            echo '<div style="box-shadow: 0 0 2px rgba(0,0,0,0.1)" class="clearfix"><span class="header-left" style="background: #fefefe"></span><span class="header-right" style="background: #fefefe"></span></div>';
-                            echo '<div><span class="body-left" style="background: #f9fafc"></span><span class="body-right" style="background: #f4f5f7"></span></div>';
-                        echo '</a>';
-                    echo '</li>';
-                    echo '<li class="skin-preview">';
-                        echo '<a href="javascript:void(0)" data-skin="skin-purple-light" class="clearfix full-opacity-hover skin">';
-                            echo '<div><span class="header-left bg-purple-active"></span><span class="bg-purple header-right"></span></div>';
-                            echo '<div><span class="body-left" style="background: #f9fafc"></span><span class="body-right" style="background: #f4f5f7"></span></div>';
-                        echo '</a>';
-                    echo '</li>';
-                    echo '<li class="skin-preview">';
-                        echo '<a href="javascript:void(0)" data-skin="skin-green-light" class="clearfix full-opacity-hover skin">';
-                            echo '<div><span class="header-left bg-green-active"></span><span class="bg-green header-right"></span></div>';
-                            echo '<div><span class="body-left" style="background: #f9fafc"></span><span class="body-right" style="background: #f4f5f7"></span></div>';
-                        echo '</a>';
-                    echo '</li>';
-                    echo '<li class="skin-preview">';
-                        echo '<a href="javascript:void(0)" data-skin="skin-red-light" class="clearfix full-opacity-hover skin">';
-                            echo '<div><span class="header-left bg-red-active"></span><span class="bg-red header-right"></span></div>';
-                            echo '<div><span class="body-left" style="background: #f9fafc"></span><span class="body-right" style="background: #f4f5f7"></span></div>';
-                        echo '</a>';
-                    echo '</li>';
-                    echo '<li class="skin-preview">';
-                        echo '<a href="javascript:void(0)" data-skin="skin-yellow-light" class="clearfix full-opacity-hover skin">';
-                            echo '<div><span class="header-left bg-yellow-active"></span><span class="bg-yellow header-right"></span></div>';
-                            echo '<div><span class="body-left" style="background: #f9fafc"></span><span class="body-right" style="background: #f4f5f7"></span></div>';
-                        echo '</a>';
-                    echo '</li>';
-                echo '</ul>';
+            </div>
+        </aside>
 
-            echo '</div>';
-        echo '</aside>';
-
-        echo '<div class="control-sidebar-bg"></div>';
+        <div class="control-sidebar-bg"></div>
+        <?php
     }
 }

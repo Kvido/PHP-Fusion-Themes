@@ -1,0 +1,32 @@
+.container-fixed(@gutter: @grid-gutter-width) {
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: floor((@gutter / 2));
+    padding-right: ceil((@gutter / 2));
+    &:extend(.clearfix all);
+}
+
+.opacity(@opacity) {
+    opacity: @opacity;
+    @opacity-ie: (@opacity * 100);
+    filter: ~"alpha(opacity=@{opacity-ie})";
+}
+
+.clearfix() {
+    &:before,
+    &:after {
+        content: " ";
+        display: table;
+    }
+    &:after {
+        clear: both;
+    }
+}
+
+.progress-bar-variant(@color) {
+    background-color: @color;
+
+    .progress-striped & {
+        #gradient > .striped();
+    }
+}
