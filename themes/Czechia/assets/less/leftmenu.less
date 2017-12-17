@@ -39,13 +39,12 @@
 
     .leftmenu {
         left: 0;
-        .transition(all .2s cubic-bezier(.37,.15,.32,.94));
+        .transition(all .2s cubic-bezier(.37, .15, .32, .94));
 
         .left-content {
             opacity: 1;
             .transform(translateX(0));
-            @transition: opacity .1s ease .2s, transform .2s ease .2s;
-            .transition(@transition);
+            .transition(~"opacity .1s ease .2s, transform .2s ease .2s");
         }
     }
 

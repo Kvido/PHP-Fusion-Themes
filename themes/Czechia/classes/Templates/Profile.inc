@@ -35,7 +35,7 @@ class Profile extends Core {
                         <div class="pull-left m-r-10">{%user_avatar%}</div>
                         <div class="overflow-hide"><h4 class="m-0">{%user_name%}<br/><small>{%user_level%}</small></h4></div>
                     </div>
-                    <div class="pull-right m-t-10">{%buttons%}</div>
+                     <div class="pull-right m-t-10">{%buttons%}</div>
                 </div>
 
                 <div class="clearfix">{%admin_buttons%}</div><hr/>

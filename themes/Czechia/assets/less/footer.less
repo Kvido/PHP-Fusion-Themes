@@ -31,9 +31,7 @@
 
     .title {
         text-transform: uppercase;
-        margin: 0;
-        margin-bottom: 15px;
-        margin-top: 20px;
+        margin: 20px 0 15px;
     }
 }
 
@@ -63,8 +61,7 @@
     width: 100%;
     z-index: 1031;
     position: fixed;
-    @transition: visibility linear 0.4s, opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    .transition(@transition);
+    .transition(~"visibility linear 0.4s, opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1)");
     transform: translateZ(0);
 }
 

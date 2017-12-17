@@ -81,7 +81,8 @@ class Downloads extends Core {
 
                                 echo '<div class="publisher m-t-10 text-center">';
                                     echo display_avatar($data, '30px', '', FALSE, 'img-rounded m-r-10');
-                                    echo self::SetLocale('12').' '.profile_link($data['user_id'], $data['user_name'], $data['user_status']);
+                                    echo self::SetLocale('12').' ';
+                                    echo !empty($data['user_id']) ? profile_link($data['user_id'], $data['user_name'], $data['user_status']) : $locale['user_na'];
                                 echo '</div>';
                             echo '</div>';
 
@@ -249,7 +250,7 @@ class Downloads extends Core {
         }
         echo '</ul>';
 
-        echo '<i class="fa fa-list"></i> '.$locale['download_1003'];
+        echo '<div class="text-bigger strong text-dark"><i class="fa fa-list"></i> '.$locale['download_1003'].'</div>';
 
         echo '<div class="list-group">';
             $download_cat_menu = self::display_cat_menu($info['download_categories']);

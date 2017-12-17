@@ -96,7 +96,7 @@ class Login extends Core {
 
         Main::HideAll();
 
-        echo '<div class="panel panel-default" style="max-width: 500px; margin: 30px auto;">';
+        echo '<div class="panel panel-default" style="max-width: 650px; margin: 30px auto;">';
             echo '<div class="panel-heading" style="background: #fff;">';
                 echo '<h3 class="panel-title"><strong>'.$locale['global_107'].'</strong></h3>';
             echo '</div>';
