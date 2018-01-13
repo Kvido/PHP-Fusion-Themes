@@ -4246,6 +4246,21 @@ a.list-group-item-danger.active:focus {
 .site-footer #backtotop .button:focus {
   background: #073250;
 }
+.site-footer .opentable,
+.site-footer .openside {
+  background: transparent;
+  padding: 0;
+  border: inherit;
+  margin-bottom: 10px;
+}
+.site-footer .opentable .title,
+.site-footer .openside .title {
+  color: #fff;
+  font-size: 26px;
+  font-weight: normal;
+  text-transform: uppercase;
+  margin: 20px 0 15px;
+}
 #footer {
   background: #094167;
   color: #fff;
