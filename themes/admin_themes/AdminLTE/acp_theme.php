@@ -20,15 +20,24 @@ if (!defined('IN_FUSION')) {
 }
 
 define('ADMINLTE', THEMES.'admin_themes/AdminLTE/');
+require_once INCLUDES.'theme_functions_include.php';
 require_once ADMINLTE.'acp_autoloader.php';
 
 define('BOOTSTRAP', TRUE);
 define('FONTAWESOME', TRUE);
 
-if (!check_admin_pass('')) {
-    define('THEME_BODY', '<body class="hold-transition lockscreen">');
+if (fusion_get_settings('version') != '9.0') {
+    if (!check_admin_pass('')) {
+        define('THEME_BODY', '<body class="hold-transition lockscreen">');
+    } else {
+        define('THEME_BODY', '<body class="hold-transition skin-blue sidebar-mini">');
+    }
 } else {
-    define('THEME_BODY', '<body class="hold-transition skin-blue sidebar-mini">');
+    if (!check_admin_pass('')) {
+        add_to_jquery('$("body").addClass("hold-transition lockscreen");');
+    } else {
+        add_to_jquery('$("body").addClass("hold-transition skin-blue sidebar-mini");');
+    }
 }
 
 \PHPFusion\Admins::getInstance()->setAdminBreadcrumbs();

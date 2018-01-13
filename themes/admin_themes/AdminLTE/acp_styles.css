@@ -5613,12 +5613,3 @@ html[dir="rtl"] .lockscreen-credentials {
   margin-left: inherit !important;
   margin-right: 70px;
 }
-html[dir="rtl"] .select2-search-hidden {
-  display: none;
-}
-html[dir="rtl"] .pull-left {
-  float: right !important;
-}
-html[dir="rtl"] .pull-right {
-  float: left !important;
-}
