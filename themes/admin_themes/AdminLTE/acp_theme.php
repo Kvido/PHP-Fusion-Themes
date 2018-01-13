@@ -34,9 +34,9 @@ if (fusion_get_settings('version') != '9.0') {
     }
 } else {
     if (!check_admin_pass('')) {
-        add_to_jquery('$("body").addClass("hold-transition lockscreen");');
+        add_to_jquery('if (!$("body").hasClass("hold-transition") || !$("body").hasClass("lockscreen")) {$("body").addClass("hold-transition lockscreen");}');
     } else {
-        add_to_jquery('$("body").addClass("hold-transition skin-blue sidebar-mini");');
+        add_to_jquery('if (!$("body").hasClass("hold-transition") || !$("body").hasClass("skin-blue")) {$("body").addClass("hold-transition skin-blue sidebar-mini");}');
     }
 }
 
