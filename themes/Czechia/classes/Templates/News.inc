@@ -59,8 +59,7 @@ class News extends Core {
                 echo "<strong class='text-dark'>".$locale['show'].":</strong> ";
                 $i = 0;
                 foreach ($info['news_filter'] as $link => $title) {
-                    $filter_active = (!isset($_GET['type']) && $i == 0) || isset($_GET['type']) && stristr($link,
-                        $_GET['type']) ? ' text-dark' : '';
+                    $filter_active = (!isset($_GET['type']) && $i == 0) || isset($_GET['type']) && stristr($link, $_GET['type']) ? ' text-dark' : '';
                     echo '<a href="'.$link.'" class="display-inline'.$filter_active.' m-r-10">'.$title.'</a>';
                     $i++;
                 }
