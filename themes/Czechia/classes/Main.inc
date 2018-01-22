@@ -34,19 +34,7 @@ class Main extends Core {
             OutputHandler::addToFooter('<script type="text/javascript" src="'.$url.'js/scripts.min.js"></script>');
             OutputHandler::addToHead('<link rel="stylesheet" type="text/css" href="'.$url.'mCustomScrollbar/jquery.mCustomScrollbar.min.css"/>');
             OutputHandler::addToFooter('<script type="text/javascript" src="'.$url.'mCustomScrollbar/jquery.mCustomScrollbar.min.js"></script>');
-            OutputHandler::addToJQuery('
-                $(".leftmenu .left-content").mCustomScrollbar({
-                    theme: "dark-2",
-                    axis: "y",
-                    scrollInertia: 550,
-                    mouseWheel: {
-                        enable: !0,
-                        axis: "y",
-                        preventDefault: !0
-                    },
-                    scrollButtons: {enable: true}
-                });
-            ');
+            OutputHandler::addToJQuery('$(".leftmenu .left-content").mCustomScrollbar({theme: "dark-2",axis: "y",scrollInertia: 550,mouseWheel: {enable: !0,axis: "y",preventDefault: !0},scrollButtons: {enable: true}});');
 
             self::Header();
 
