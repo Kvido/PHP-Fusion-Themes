@@ -85,6 +85,7 @@ class Main extends Core {
 
                 echo '<div class="row m-t-20 m-b-20">';
                     echo '<div class="col-xs-12 col-sm-'.$content['sm'].' col-md-'.$content['md'].' col-lg-'.$content['lg'].'">';
+                        echo showbanners(1);
                         echo defined('U_CENTER') && U_CENTER ? U_CENTER : '';
                         echo CONTENT;
                         echo defined('L_CENTER') && L_CENTER ? L_CENTER : '';
@@ -106,6 +107,8 @@ class Main extends Core {
                     echo '<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">'.BL_CENTER.'</div>';
                     echo '</div>';
                 }
+
+                echo showbanners(2);
 
             echo '</div>'; // container
 
