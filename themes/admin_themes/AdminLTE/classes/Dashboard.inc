@@ -203,7 +203,7 @@ class Dashboard {
                             echo '<div class="info-box-content">';
                                 echo '<strong class="info-box-text">'.$locale['272'].' '.$locale['258'].'</strong>';
                                 echo '<div class="pull-left display-inline-block m-r-5">';
-                                    echo '<span class="text-smaller">'.$locale['272'].'</span><br/>';
+                                    echo '<span class="text-smaller">'.$locale['261'].'</span><br/>';
                                     echo '<h4 class="m-t-0">'.number_format($photos['photo']).'</h4>';
                                 echo '</div>';
                                 echo '<div class="pull-left display-inline-block m-r-5">';
